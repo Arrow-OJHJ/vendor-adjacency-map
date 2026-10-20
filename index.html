@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arrow ECS UK – Vendor Line Card 2026</title>
+  <style>
+    /* ── Carbon / IBM Design tokens ── */
+    :root {
+      --blue-60: #0f62fe;
+      --blue-70: #0043ce;
+      --blue-10: #edf5ff;
+      --blue-20: #d0e2ff;
+      --gray-10: #f4f4f4;
+      --gray-20: #e0e0e0;
+      --gray-30: #c6c6c6;
+      --gray-50: #8d8d8d;
+      --gray-70: #525252;
+      --gray-90: #262626;
+      --gray-100: #161616;
+      --white: #ffffff;
+      --red-60: #da1e28;
+      --teal-50: #009d9a;
+      --purple-60: #8a3ffc;
+      --orange-40: #ff832b;
+      --green-50: #198038;
+      --magenta-50: #ee5396;
+      --cyan-40: #33b1ff;
+      --yellow-30: #f1c21b;
+
+      /* tag colour palette (9 categories) */
+      --tag-dc:       #0f62fe; /* Data Centre */
+      --tag-bi:       #8a3ffc; /* Business Intelligence */
+      --tag-cloud:    #009d9a; /* Cloud */
+      --tag-mob:      #198038; /* Mobility */
+      --tag-sec:      #da1e28; /* Security */
+      --tag-net:      #ee5396; /* Networking */
+      --tag-iot:      #ff832b; /* IoT and Edge */
+      --tag-arrow:    #0043ce; /* ArrowSphere */
+      --tag-devops:   #6929c4; /* DevOps */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      background: var(--gray-10);
+      color: var(--gray-100);
+    }
+
+    /* ── Top bar ── */
+    header {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--gray-90);
+    }
+    header .logo {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      text-decoration: none;
+      margin-right: 1.5rem;
+    }
+    header .logo span { color: var(--blue-60); }
+    header .divider {
+      width: 1px;
+      height: 24px;
+      background: var(--gray-70);
+      margin-right: 1.5rem;
+    }
+    header .page-title {
+      font-size: 14px;
+      color: var(--gray-30);
+      font-weight: 400;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 2.5rem 2rem 2rem;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+    }
+    .hero h1 + .hero-sub {
+      font-size: clamp(14px, 1.5vw, 17px);
+      font-weight: 300;
+      color: var(--gray-30);
+      margin-bottom: 1rem;
+      white-space: nowrap;
+    }
+    .hero p {
+      font-size: 14px;
+      color: var(--gray-50);
+      max-width: 560px;
+    }
+    .hero .meta {
+      margin-top: 1rem;
+      font-size: 12px;
+      color: var(--gray-70);
+    }
+
+    /* ── Controls ── */
+    .controls {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-20);
+      padding: 1rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+      position: sticky;
+      top: 48px;
+      z-index: 90;
+    }
+
+    /* Search */
+    .search-wrap {
+      position: relative;
+      flex: 0 1 320px;
+      min-width: 200px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      fill: var(--gray-50);
+    }
+    .search-wrap input {
+      width: 100%;
+      height: 40px;
+      padding: 0 1rem 0 2.5rem;
+      border: 1px solid var(--gray-30);
+      background: var(--gray-10);
+      color: var(--gray-100);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      border-radius: 0;
+    }
+    .search-wrap input:focus {
+      border-color: var(--blue-60);
+      outline: 2px solid var(--blue-60);
+      outline-offset: -2px;
+    }
+    .search-wrap input::placeholder { color: var(--gray-50); }
+
+    /* Filter tags */
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 12px;
+      color: var(--gray-50);
+      margin-right: 0.25rem;
+      white-space: nowrap;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border: 1px solid var(--gray-30);
+      background: var(--white);
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+      border-radius: 0;
+      color: var(--gray-70);
+      transition: background 0.1s, color 0.1s;
+      white-space: nowrap;
+    }
+    .filter-btn .dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .filter-btn:hover { background: var(--gray-10); }
+    .filter-btn.active {
+      color: var(--white);
+      border-color: transparent;
+    }
+
+    .filter-btn[data-tag="Data Centre"].active       { background: var(--tag-dc); }
+    .filter-btn[data-tag="Business Intelligence"].active { background: var(--tag-bi); }
+    .filter-btn[data-tag="Cloud"].active             { background: var(--tag-cloud); }
+    .filter-btn[data-tag="Mobility"].active          { background: var(--tag-mob); }
+    .filter-btn[data-tag="Security"].active          { background: var(--tag-sec); }
+    .filter-btn[data-tag="Networking"].active        { background: var(--tag-net); }
+    .filter-btn[data-tag="IoT and Edge"].active      { background: var(--tag-iot); }
+    .filter-btn[data-tag="ArrowSphere"].active       { background: var(--tag-arrow); }
+    .filter-btn[data-tag="DevOps"].active            { background: var(--tag-devops); }
+
+    .clear-btn {
+      background: none;
+      border: none;
+      color: var(--blue-60);
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 4px 6px;
+      text-decoration: underline;
+    }
+    .clear-btn:hover { color: var(--blue-70); }
+
+    /* Sort dropdown */
+    .sort-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+    .sort-wrap select {
+      height: 40px;
+      padding: 0 2rem 0 0.75rem;
+      border: 1px solid var(--gray-30);
+      background: var(--gray-10);
+      color: var(--gray-100);
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+      border-radius: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 32 32'%3E%3Cpath fill='%238d8d8d' d='M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      cursor: pointer;
+    }
+    .sort-wrap select:focus {
+      border-color: var(--blue-60);
+      outline: 2px solid var(--blue-60);
+      outline-offset: -2px;
+    }
+
+    /* ── Results bar ── */
+    .results-bar {
+      padding: 0.75rem 2rem;
+      font-size: 12px;
+      color: var(--gray-50);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      padding: 0 2rem 2rem;
+      background: var(--gray-20);
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--white);
+      padding: 1.25rem 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      transition: box-shadow 0.15s;
+    }
+    .card:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 1;
+    }
+    .card.hidden { display: none; }
+
+    .card { cursor: default; }
+    .card.has-page { cursor: pointer; }
+    .card.has-page:hover .card-name { color: var(--blue-60); }
+
+    .card-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-100);
+      line-height: 1.3;
+      transition: color 0.1s;
+    }
+
+    .card-coming-soon {
+      font-size: 11px;
+      color: var(--gray-50);
+      margin-top: 2px;
+    }
+
+    .card-arrow {
+      display: none;
+      font-size: 11px;
+      color: var(--blue-60);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .card.has-page .card-arrow { display: block; }
+    .card.has-page .card-coming-soon { display: none; }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--gray-70);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--white);
+      border-radius: 0;
+      white-space: nowrap;
+    }
+    .tag[data-tag="Data Centre"]           { background: var(--tag-dc); }
+    .tag[data-tag="Business Intelligence"] { background: var(--tag-bi); }
+    .tag[data-tag="Cloud"]                 { background: var(--tag-cloud); }
+    .tag[data-tag="Mobility"]              { background: var(--tag-mob); }
+    .tag[data-tag="Security"]              { background: var(--tag-sec); }
+    .tag[data-tag="Networking"]            { background: var(--tag-net); }
+    .tag[data-tag="IoT and Edge"]          { background: var(--tag-iot); }
+    .tag[data-tag="ArrowSphere"]           { background: var(--tag-arrow); }
+    .tag[data-tag="DevOps"]               { background: var(--tag-devops); }
+
+    /* no results */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: var(--gray-50);
+      font-size: 14px;
+      background: var(--white);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--gray-100);
+      color: var(--gray-50);
+      font-size: 12px;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--gray-90);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer a { color: var(--gray-30); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .controls { padding: 0.75rem 1rem; top: 48px; }
+      .grid { padding: 0 1rem 2rem; }
+      .results-bar { padding: 0.5rem 1rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      header { padding: 0 1rem; }
+      footer { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top nav -->
+<header>
+  <a class="logo" href="#">Arrow ECS</a>
+  <div class="divider"></div>
+  <span class="page-title">UK Vendor Line Card 2026</span>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">Arrow ECS &nbsp;·&nbsp; United Kingdom</div>
+  <h1>Vendor Line Card 2026</h1>
+  <p class="hero-sub">Enterprise Computing Solutions</p>
+  <p>Market-leading portfolio of technology vendors available as of 1 July 2026. Search, filter by category, or click a vendor to explore.</p>
+  <p class="meta">Source: Arrow ECS UK Line Card 2026 &nbsp;·&nbsp; <a href="https://www.arrow.com/globalecs/uk/products/" style="color:var(--gray-50)">arrow.com/globalecs/uk/products</a></p>
+</section>
+
+<!-- Controls -->
+<div class="controls">
+  <div class="search-wrap">
+    <svg width="16" height="16" viewBox="0 0 32 32"><path d="M29 27.586l-7.552-7.552A11.018 11.018 0 1 0 19.434 22.02L26.986 29.6 29 27.586zM13 22a9 9 0 1 1 9-9 9.01 9.01 0 0 1-9 9z"/></svg>
+    <input type="text" id="searchInput" placeholder="Search vendors…" autocomplete="off" />
+  </div>
+
+  <div class="filter-group">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn" data-tag="Data Centre">
+      <span class="dot" style="background:var(--tag-dc)"></span>Data Centre
+    </button>
+    <button class="filter-btn" data-tag="Business Intelligence">
+      <span class="dot" style="background:var(--tag-bi)"></span>Business Intelligence
+    </button>
+    <button class="filter-btn" data-tag="Cloud">
+      <span class="dot" style="background:var(--tag-cloud)"></span>Cloud
+    </button>
+    <button class="filter-btn" data-tag="Mobility">
+      <span class="dot" style="background:var(--tag-mob)"></span>Mobility
+    </button>
+    <button class="filter-btn" data-tag="Security">
+      <span class="dot" style="background:var(--tag-sec)"></span>Security
+    </button>
+    <button class="filter-btn" data-tag="Networking">
+      <span class="dot" style="background:var(--tag-net)"></span>Networking
+    </button>
+    <button class="filter-btn" data-tag="IoT and Edge">
+      <span class="dot" style="background:var(--tag-iot)"></span>IoT &amp; Edge
+    </button>
+    <button class="filter-btn" data-tag="ArrowSphere">
+      <span class="dot" style="background:var(--tag-arrow)"></span>ArrowSphere
+    </button>
+    <button class="filter-btn" data-tag="DevOps">
+      <span class="dot" style="background:var(--tag-devops)"></span>DevOps
+    </button>
+    <button class="clear-btn" id="clearBtn">Clear all</button>
+  </div>
+
+  <div class="sort-wrap">
+    <label class="filter-label" for="sortSelect">Sort:</label>
+    <select id="sortSelect">
+      <option value="popularity">Popularity</option>
+      <option value="az">A - Z</option>
+      <option value="za">Z - A</option>
+    </select>
+  </div>
+</div>
+
+<!-- Results count -->
+<div class="results-bar">
+  <span id="resultCount"></span>
+</div>
+
+<!-- Vendor grid -->
+<main class="grid" id="vendorGrid"></main>
+
+<!-- Footer -->
+<footer>
+  <span>© 2026 Arrow Electronics, Inc. Arrow and the Arrow logo are registered trademarks of Arrow Electronics, Inc.</span>
+  <a href="https://arrow.com">arrow.com</a>
+</footer>
+
+<script>
+const VENDORS = [
+  { name: "Actian", desc: "Actian provides data management, analytics, and integration platforms spanning hybrid cloud and on-premises environments. Its portfolio covers database, data warehouse, integration, and business intelligence workloads.", tags: ["Data Centre","Business Intelligence","Cloud","Networking","Security","DevOps"] },
+  { name: "AlgoSec", desc: "AlgoSec delivers network security policy management and firewall automation across hybrid cloud environments. It helps organisations manage security policies, compliance, and network connectivity.", tags: ["Security","Networking","Cloud"] },
+  { name: "Alibaba Cloud", desc: "Alibaba Cloud is a leading global cloud computing platform offering IaaS, PaaS, and SaaS services. It is available through Arrow's ArrowSphere marketplace.", tags: ["Cloud","ArrowSphere"] },
+  { name: "Allot", desc: "Allot provides network intelligence and security solutions for service providers and enterprises. Its portfolio spans network traffic management and cybersecurity services.", tags: ["Networking","Security"] },
+  { name: "Amazon Web Services (AWS)", desc: "AWS is the world's leading cloud platform offering compute, storage, databases, and hundreds of managed services. It is available through ArrowSphere and supports DevOps toolchains.", tags: ["Cloud","ArrowSphere","DevOps"] },
+  { name: "AMD", desc: "AMD designs high-performance processors, GPUs, and adaptive computing solutions for data centre and cloud workloads. Its hardware underpins modern data centre and cloud infrastructure.", tags: ["Data Centre","Cloud"] },
+  { name: "Arista Networks", desc: "Arista Networks is a leader in cloud networking, delivering high-speed Ethernet switching and routing for data centres and campuses. Its products are fundamental to data centre and networking infrastructure.", tags: ["Data Centre","Networking"] },
+  { name: "Avepoint", desc: "AvePoint provides cloud-native data management, governance, and collaboration solutions for Microsoft 365 and beyond. Its platform is available via ArrowSphere and supports cloud and mobility use cases.", tags: ["Cloud","Mobility","ArrowSphere"] },
+  { name: "Bitdefender", desc: "Bitdefender is a cybersecurity vendor offering endpoint protection, threat intelligence, and cloud security solutions. Its products are available via ArrowSphere.", tags: ["Security","ArrowSphere"] },
+  { name: "Bitnami", desc: "Bitnami (part of VMware/Broadcom) provides packaged open-source application stacks and containers for rapid cloud deployment. It is primarily a cloud enablement tool.", tags: ["Cloud"] },
+  { name: "BitTitan", desc: "BitTitan specialises in cloud migration automation, enabling organisations to migrate workloads to Microsoft 365 and other cloud platforms. It is available through ArrowSphere.", tags: ["Cloud","ArrowSphere"] },
+  { name: "BlackDuck", desc: "Black Duck by Synopsys provides open-source security and licence compliance management for software development pipelines. It is a security and DevOps tool.", tags: ["Security","DevOps"] },
+  { name: "Broadcom Symantec Enterprise Division (+Blue Coat Systems)", desc: "Broadcom's Symantec Enterprise Division delivers comprehensive endpoint, network, email, and web security solutions for enterprises. Its broad portfolio spans security, networking, cloud, and data centre.", tags: ["Security","Networking","Cloud","Data Centre"] },
+  { name: "Carbon Black by Broadcom", desc: "Carbon Black (VMware Carbon Black, now Broadcom) is a cloud-native endpoint and workload security platform. It provides advanced threat detection and response capabilities.", tags: ["Security"] },
+  { name: "Check Point", desc: "Check Point is a leading cybersecurity vendor offering network, cloud, endpoint, and mobile security solutions. Its portfolio covers security, networking, cloud, and mobility.", tags: ["Security","Networking","Cloud","Mobility"] },
+  { name: "Citrix", desc: "Citrix delivers virtual desktop infrastructure, application delivery, and secure remote access solutions for enterprise mobility and cloud. Its platform spans cloud, mobility, networking, data centre, and ArrowSphere.", tags: ["Cloud","Mobility","Networking","Data Centre","ArrowSphere"] },
+  { name: "Citrix CSP", desc: "Citrix CSP (Cloud Service Provider programme) enables partners to deliver Citrix virtual desktop and app solutions via cloud subscription. It maps to cloud, mobility, networking, data centre, and ArrowSphere.", tags: ["Cloud","Mobility","Networking","Data Centre","ArrowSphere"] },
+  { name: "Civo", desc: "Civo is a cloud-native infrastructure provider specialising in fast Kubernetes-based cloud services for developers. It supports cloud, DevOps, and ArrowSphere distribution.", tags: ["Cloud","DevOps","ArrowSphere"] },
+  { name: "CloudHealth", desc: "CloudHealth by VMware provides multi-cloud cost management, governance, and optimisation services. It spans cloud, business intelligence, ArrowSphere, and DevOps.", tags: ["Cloud","Business Intelligence","ArrowSphere","DevOps"] },
+  { name: "Cloudian", desc: "Cloudian provides enterprise object storage solutions compatible with Amazon S3, designed for data centre deployments. It is primarily a data centre storage vendor.", tags: ["Data Centre"] },
+  { name: "Cohesity", desc: "Cohesity delivers hyperconverged secondary storage and data management for data centres and cloud environments. Its platform spans data centre and cloud.", tags: ["Data Centre","Cloud"] },
+  { name: "Commvault", desc: "Commvault is an enterprise data protection and information management platform covering cloud, data centre, and SaaS. It is available through ArrowSphere.", tags: ["Data Centre","Cloud","ArrowSphere"] },
+  { name: "Ctera", desc: "CTERA provides edge-to-cloud file services and enterprise file storage, bridging data centre, cloud, and edge environments. It spans data centre, cloud, IoT and Edge, and ArrowSphere.", tags: ["Data Centre","Cloud","IoT and Edge","ArrowSphere"] },
+  { name: "Cycloid", desc: "Cycloid is an open-source DevOps and cloud management platform providing an internal developer portal and infrastructure automation. It covers cloud and DevOps.", tags: ["Cloud","DevOps"] },
+  { name: "Dataminr", desc: "Dataminr is an AI-powered real-time information discovery platform used for security threat intelligence and risk detection. It is primarily a security vendor.", tags: ["Security"] },
+  { name: "DBVisit", desc: "DBVisit provides database replication and disaster recovery solutions for Oracle and other databases across data centre and cloud workloads.", tags: ["Data Centre","Cloud"] },
+  { name: "Delinea", desc: "Delinea (formerly Thycotic and Centrify) specialises in privileged access management (PAM) and identity security solutions for enterprises.", tags: ["Security"] },
+  { name: "Dell Technologies", desc: "Dell Technologies is a global leader in IT infrastructure, delivering servers, storage, networking, PCs, and cloud solutions. Its broad portfolio spans data centre, cloud, networking, mobility, and security.", tags: ["Data Centre","Cloud","Networking","Mobility","Security"] },
+  { name: "Densify", desc: "Densify provides AI-driven cloud resource optimisation and workload management for cloud and container environments. It is primarily a cloud management tool.", tags: ["Cloud"] },
+  { name: "Devo", desc: "Devo is a cloud-native security analytics and SIEM platform that provides real-time data ingestion and threat analysis. It spans security and business intelligence.", tags: ["Security","Business Intelligence"] },
+  { name: "Druva", desc: "Druva is a SaaS-based data protection and governance platform covering cloud workloads, endpoints, and SaaS applications. It spans cloud, data centre, and ArrowSphere.", tags: ["Cloud","Data Centre","ArrowSphere"] },
+  { name: "Entrust", desc: "Entrust provides identity, payments, and data security solutions including PKI, HSMs, digital certificates, and identity verification. Its portfolio spans security, cloud, mobility, and data centre.", tags: ["Security","Cloud","Mobility","Data Centre"] },
+  { name: "Equinix", desc: "Equinix operates global data centres and interconnection services, providing colocation and digital infrastructure. It is the world's largest data centre provider.", tags: ["Data Centre"] },
+  { name: "Everfox", desc: "Everfox (formerly Forcepoint Government) specialises in insider risk management, cross-domain security, and data protection for government and enterprise. It spans security, networking, and cloud.", tags: ["Security","Networking","Cloud"] },
+  { name: "Everpure", desc: "Everpure provides IoT-connected water filtration and monitoring solutions for commercial environments, offering remote management and analytics.", tags: ["IoT and Edge"] },
+  { name: "ExaGrid", desc: "ExaGrid provides tiered backup storage appliances with deduplication for data centre environments, optimising backup performance and recovery times.", tags: ["Data Centre"] },
+  { name: "F5 Networks", desc: "F5 Networks delivers application delivery networking, load balancing, and application security solutions for data centres and cloud. It spans networking and security.", tags: ["Networking","Security"] },
+  { name: "F5 Networks Global Support", desc: "F5 Networks Global Support provides worldwide technical support and professional services for F5's networking and application security product portfolio.", tags: ["Networking","Security"] },
+  { name: "Forcepoint Cloud", desc: "Forcepoint Cloud delivers cloud-based web and email security, CASB, and data loss prevention solutions for enterprise environments.", tags: ["Security","Cloud"] },
+  { name: "Fortinet", desc: "Fortinet is a global leader in broad, integrated, and automated cybersecurity solutions covering network security, cloud security, and endpoint protection.", tags: ["Security","Networking","Cloud"] },
+  { name: "Fortinet Global Support", desc: "Fortinet Global Support provides worldwide technical support and services for Fortinet's comprehensive cybersecurity and networking product portfolio.", tags: ["Security","Networking","Cloud"] },
+  { name: "Getvisibility", desc: "Getvisibility is an AI-powered data discovery, classification, and data security posture management (DSPM) platform for enterprise environments.", tags: ["Security"] },
+  { name: "HCLSoftware", desc: "HCLSoftware delivers enterprise software solutions spanning DevOps automation, security, digital experience, and data management for large organisations.", tags: ["Security","DevOps"] },
+  { name: "HYCU", desc: "HYCU provides purpose-built data protection and backup solutions for multi-cloud and SaaS environments, spanning cloud and data centre deployments.", tags: ["Cloud","Data Centre"] },
+  { name: "IBM", desc: "IBM is a global technology leader offering a vast portfolio spanning cloud, AI, security, data management, mainframe, networking, and DevOps. Its solutions cover virtually every IT domain.", tags: ["Data Centre","Business Intelligence","Cloud","Security","Networking","IoT and Edge","DevOps"] },
+  { name: "IBM Cloud SKUs (IaaS/SaaS/PaaS offerings)", desc: "IBM Cloud SKUs represent IBM's cloud platform offerings including IaaS, SaaS, and PaaS services. Available through Arrow's cloud distribution.", tags: ["Cloud"] },
+  { name: "Infinidat", desc: "Infinidat provides enterprise-grade storage systems known for high performance, five-nines reliability, and petabyte-scale capacity for large data centres.", tags: ["Data Centre"] },
+  { name: "Ixia / Netoptics / Keysight", desc: "Ixia (now Keysight) provides network test, visibility, and security solutions including network taps and packet brokers for enterprise and telco environments.", tags: ["Networking","Security"] },
+  { name: "Liqid", desc: "Liqid delivers composable disaggregated infrastructure solutions for high-performance data centre and cloud deployments, enabling dynamic resource allocation.", tags: ["Data Centre","Cloud"] },
+  { name: "Metallic, a Commvault Venture", desc: "Metallic is a SaaS-based data protection platform (a Commvault venture) for cloud and hybrid workloads, available via ArrowSphere.", tags: ["Cloud","ArrowSphere"] },
+  { name: "Microsoft Cloud (CSP & SPLA)", desc: "Microsoft Cloud through CSP and SPLA programmes delivers Microsoft 365, Azure, and Dynamics 365 via channel partners and ArrowSphere.", tags: ["Cloud","Mobility","ArrowSphere"] },
+  { name: "Motorola", desc: "Motorola Solutions delivers mission-critical communications, video security, and command centre software for public safety and enterprise. Its portfolio spans mobility, networking, and IoT and Edge.", tags: ["Mobility","Networking","IoT and Edge"] },
+  { name: "NetApp", desc: "NetApp provides enterprise data storage, management, and cloud data services for hybrid and multi-cloud environments. Its portfolio spans data centre, cloud, networking, and ArrowSphere.", tags: ["Data Centre","Cloud","Networking","ArrowSphere"] },
+  { name: "Netaxis", desc: "Netaxis provides telecom routing, number management, and cloud communications solutions for service providers and enterprises.", tags: ["Networking","Cloud"] },
+  { name: "Nutanix", desc: "Nutanix delivers hyperconverged infrastructure and cloud software for hybrid and multi-cloud environments. Its platform spans data centre, cloud, and ArrowSphere.", tags: ["Data Centre","Cloud","ArrowSphere"] },
+  { name: "Omnissa", desc: "Omnissa (formerly VMware End-User Computing) provides digital workspace and unified endpoint management solutions for enterprise mobility and cloud environments.", tags: ["Mobility","Cloud"] },
+  { name: "Opswat", desc: "OPSWAT provides critical infrastructure protection and file security solutions including malware analysis and data sanitisation for operational technology environments.", tags: ["Security","Networking"] },
+  { name: "Oracle", desc: "Oracle is a global leader in database, cloud infrastructure, and enterprise applications covering data management, analytics, cloud, and business intelligence.", tags: ["Data Centre","Business Intelligence","Cloud","ArrowSphere"] },
+  { name: "Perle", desc: "Perle provides industrial-grade device networking hardware including serial servers, console servers, and IoT connectivity solutions for enterprise and industrial environments.", tags: ["Networking","IoT and Edge","Data Centre"] },
+  { name: "ProLion", desc: "ProLion specialises in ransomware protection and data security monitoring for NetApp storage environments, providing real-time threat detection and recovery.", tags: ["Data Centre","Security"] },
+  { name: "Quantum", desc: "Quantum provides high-performance storage, archive, and data management solutions for data centre and cloud environments, specialising in unstructured data at scale.", tags: ["Data Centre","Cloud"] },
+  { name: "Qumulo", desc: "Qumulo offers hybrid cloud file storage with real-time analytics and management for data centre and cloud workloads, supporting large-scale unstructured data.", tags: ["Data Centre","Cloud"] },
+  { name: "Radware", desc: "Radware delivers application delivery, DDoS protection, and cybersecurity solutions for data centre and cloud environments, protecting applications and infrastructure.", tags: ["Networking","Security"] },
+  { name: "Riverbed", desc: "Riverbed provides WAN optimisation, SD-WAN, and network performance management solutions for distributed enterprises, spanning networking, cloud, and data centre.", tags: ["Networking","Cloud","Data Centre"] },
+  { name: "RSA", desc: "RSA provides identity and access management, multi-factor authentication, and risk-based security solutions for enterprises of all sizes.", tags: ["Security"] },
+  { name: "Rubrik", desc: "Rubrik delivers cloud data management and backup solutions for hybrid cloud and data centre environments, combining data protection with security analytics.", tags: ["Data Centre","Cloud"] },
+  { name: "Scale Computing", desc: "Scale Computing provides hyperconverged infrastructure optimised for edge computing, data centre, and cloud deployments. Its platform spans data centre, cloud, IoT and Edge, networking, and ArrowSphere.", tags: ["Data Centre","Cloud","IoT and Edge","Networking","ArrowSphere"] },
+  { name: "Scality", desc: "Scality delivers software-defined, cloud-native object and file storage for data centres and cloud environments, offering petabyte-scale scalability.", tags: ["Data Centre","Cloud","ArrowSphere"] },
+  { name: "Schneider Electric", desc: "Schneider Electric provides energy management and data centre infrastructure solutions including UPS, cooling, and power distribution systems.", tags: ["Data Centre"] },
+  { name: "SNYK", desc: "Snyk is a developer-first security platform that finds and fixes vulnerabilities in code, containers, and open-source dependencies within CI/CD pipelines.", tags: ["Security","DevOps"] },
+  { name: "Sophos", desc: "Sophos delivers next-generation cybersecurity solutions including endpoint protection, firewall, and managed threat response for organisations of all sizes.", tags: ["Security","Networking","Cloud"] },
+  { name: "Splunk", desc: "Splunk is a leading platform for security information and event management (SIEM), operational intelligence, and business analytics across hybrid environments.", tags: ["Security","Business Intelligence","Cloud","Data Centre"] },
+  { name: "Supermicro", desc: "Supermicro designs and manufactures high-performance server and storage systems for data centres and cloud deployments, optimised for energy efficiency.", tags: ["Data Centre","Cloud"] },
+  { name: "Superna", desc: "Superna provides data security and ransomware defence solutions specifically for NetApp and enterprise file storage systems, with AI-driven threat detection.", tags: ["Data Centre","Security"] },
+  { name: "Symantec by Broadcom", desc: "Symantec by Broadcom delivers enterprise endpoint, email, and web security solutions for on-premises and cloud environments, protecting against advanced threats.", tags: ["Security","Cloud"] },
+  { name: "TBSC", desc: "TBSC provides IT infrastructure and business continuity solutions covering data centre and cloud environments, supporting organisations' resilience strategies.", tags: ["Data Centre","Cloud"] },
+  { name: "Tenable", desc: "Tenable is a leading vulnerability management and cyber exposure platform covering on-premises, cloud, and OT environments for proactive risk management.", tags: ["Security","Cloud"] },
+  { name: "Trellix (McAfee + FireEye)", desc: "Trellix (formed from McAfee Enterprise and FireEye) provides extended detection and response (XDR) and threat intelligence across endpoint, network, and cloud.", tags: ["Security","Networking","Cloud"] },
+  { name: "TrendAI", desc: "TrendAI provides AI-driven cybersecurity and advanced threat intelligence capabilities for enterprise security operations.", tags: ["Security"] },
+  { name: "Trend Micro / Tipping Point", desc: "Trend Micro/TippingPoint delivers network intrusion prevention and threat defence solutions for enterprise security environments.", tags: ["Security"] },
+  { name: "Vade", desc: "Vade provides AI-powered email security and anti-phishing solutions for Microsoft 365 and ISPs, protecting against advanced email-borne threats.", tags: ["Security","Cloud"] },
+  { name: "Vast Data", desc: "VAST Data delivers all-flash, disaggregated NVMe storage for AI, analytics, and large-scale data centre workloads, offering near-unlimited scalability.", tags: ["Data Centre","Cloud"] },
+  { name: "Veeam", desc: "Veeam provides backup, recovery, and data management solutions for cloud, virtual, and physical environments, trusted by enterprises worldwide.", tags: ["Data Centre","Cloud","ArrowSphere"] },
+  { name: "Veeam VCSP", desc: "Veeam VCSP (Veeam Cloud & Service Provider) programme enables service providers to deliver Veeam-based backup-as-a-service offerings via ArrowSphere.", tags: ["Data Centre","Cloud","ArrowSphere"] },
+  { name: "Veritas", desc: "Veritas provides enterprise data management, backup, and information governance solutions for data centre and cloud environments at petabyte scale.", tags: ["Data Centre","Cloud"] },
+  { name: "VMware by Broadcom", desc: "VMware by Broadcom is the world's leading virtualisation and cloud infrastructure platform, spanning data centre, cloud, networking, security, mobility, DevOps, and ArrowSphere.", tags: ["Data Centre","Cloud","Networking","Security","Mobility","DevOps","ArrowSphere"] }
+];
+
+const TAG_COLORS = {
+  "Data Centre": "var(--tag-dc)",
+  "Business Intelligence": "var(--tag-bi)",
+  "Cloud": "var(--tag-cloud)",
+  "Mobility": "var(--tag-mob)",
+  "Security": "var(--tag-sec)",
+  "Networking": "var(--tag-net)",
+  "IoT and Edge": "var(--tag-iot)",
+  "ArrowSphere": "var(--tag-arrow)",
+  "DevOps": "var(--tag-devops)"
+};
+
+// Popularity order — IBM #1, then major/well-known vendors first
+const POPULARITY_ORDER = [
+  "IBM",
+  "F5 Networks",
+  "F5 Networks Global Support",
+  "Entrust",
+  "Opswat",
+  "BlackDuck",
+  "VMware by Broadcom",
+  "Microsoft Cloud (CSP & SPLA)",
+  "Amazon Web Services (AWS)",
+  "Dell Technologies",
+  "Veeam",
+  "Nutanix",
+  "NetApp",
+  "Fortinet",
+  "Check Point",
+  "Citrix",
+  "Citrix CSP",
+  "Oracle",
+  "Splunk",
+  "Sophos",
+  "Commvault",
+  "Broadcom Symantec Enterprise Division (+Blue Coat Systems)",
+  "Symantec by Broadcom",
+  "Carbon Black by Broadcom",
+  "Trellix (McAfee + FireEye)",
+  "Trend Micro / Tipping Point",
+  "Rubrik",
+  "Cohesity",
+  "Veritas",
+  "Druva",
+  "Veeam VCSP",
+  "Metallic, a Commvault Venture",
+  "Arista Networks",
+  "Radware",
+  "Riverbed",
+  "Tenable",
+  "CrowdStrike",
+  "Delinea",
+  "RSA",
+  "AlgoSec",
+  "Bitdefender",
+  "Palo Alto Networks",
+  "HCLSoftware",
+  "Supermicro",
+  "AMD",
+  "Infinidat",
+  "Vast Data",
+  "ExaGrid",
+  "Quantum",
+  "Cloudian",
+  "Qumulo",
+  "Scality",
+  "Scale Computing",
+  "Ctera",
+  "NetApp",
+  "Liqid",
+  "Schneider Electric",
+  "Equinix",
+  "IBM Cloud SKUs (IaaS/SaaS/PaaS offerings)",
+  "Alibaba Cloud",
+  "Allot",
+  "Avepoint",
+  "Bitnami",
+  "BitTitan",
+  "Civo",
+  "CloudHealth",
+  "Cycloid",
+  "Dataminr",
+  "DBVisit",
+  "Densify",
+  "Devo",
+  "Everfox",
+  "Everpure",
+  "Forcepoint Cloud",
+  "Fortinet Global Support",
+  "Getvisibility",
+  "HYCU",
+  "Ixia / Netoptics / Keysight",
+  "Motorola",
+  "Netaxis",
+  "Omnissa",
+  "Perle",
+  "ProLion",
+  "SNYK",
+  "Superna",
+  "TBSC",
+  "TrendAI",
+  "Vade",
+];
+
+const grid = document.getElementById('vendorGrid');
+const searchInput = document.getElementById('searchInput');
+const resultCount = document.getElementById('resultCount');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const clearBtn = document.getElementById('clearBtn');
+const sortSelect = document.getElementById('sortSelect');
+
+let activeFilters = new Set();
+let currentSort = 'popularity';
+
+function getSortedVendors() {
+  const sorted = [...VENDORS];
+  if (currentSort === 'az') {
+    sorted.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (currentSort === 'za') {
+    sorted.sort((a, b) => b.name.localeCompare(a.name));
+  } else {
+    // popularity
+    sorted.sort((a, b) => {
+      const ai = POPULARITY_ORDER.indexOf(a.name);
+      const bi = POPULARITY_ORDER.indexOf(b.name);
+      const ar = ai === -1 ? 9999 : ai;
+      const br = bi === -1 ? 9999 : bi;
+      if (ar !== br) return ar - br;
+      return a.name.localeCompare(b.name);
+    });
+  }
+  return sorted;
+}
+
+// Vendor page map — add entries here as new vendor pages are built
+const VENDOR_PAGES = {
+  "IBM":                        "vendors/ibm.html",
+  "F5 Networks":                "vendors/f5.html",
+  "F5 Networks Global Support": "vendors/f5.html",
+  "Entrust":                    "vendors/entrust.html",
+  "BlackDuck":                  "vendors/blackduck.html",
+  "Opswat":                     "vendors/opswat.html",
+};
+
+function renderCards() {
+  grid.innerHTML = '';
+  getSortedVendors().forEach(v => {
+    const card = document.createElement('div');
+    const page = VENDOR_PAGES[v.name];
+    card.className = 'card' + (page ? ' has-page' : '');
+    card.dataset.name = v.name.toLowerCase();
+    card.dataset.tags = v.tags.join('|');
+    if (page) {
+      card.addEventListener('click', () => { window.open(page, '_blank'); });
+    }
+
+    const tagsHtml = v.tags.map(t =>
+      `<span class="tag" data-tag="${t}">${t}</span>`
+    ).join('');
+
+    card.innerHTML = `
+      <div class="card-name">${v.name}</div>
+      <div class="card-arrow">View profile &rsaquo;</div>
+      <div class="card-coming-soon">Profile coming soon</div>
+      <div class="card-desc">${v.desc}</div>
+      <div class="card-tags">${tagsHtml}</div>
+    `;
+    grid.appendChild(card);
+  });
+  applyFilters();
+}
+
+function applyFilters() {
+  const query = searchInput.value.toLowerCase().trim();
+  const cards = grid.querySelectorAll('.card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const nameMatch = !query || card.dataset.name.includes(query);
+    const tagList = card.dataset.tags.split('|');
+    const tagMatch = activeFilters.size === 0 || [...activeFilters].every(f => tagList.includes(f));
+
+    if (nameMatch && tagMatch) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  // Remove existing no-results
+  const existing = grid.querySelector('.no-results');
+  if (existing) existing.remove();
+
+  if (visible === 0) {
+    const el = document.createElement('div');
+    el.className = 'no-results';
+    el.textContent = 'No vendors match your search or filter criteria.';
+    grid.appendChild(el);
+  }
+
+  const total = VENDORS.length;
+  resultCount.textContent = visible === total
+    ? `Showing all ${total} vendors`
+    : `Showing ${visible} of ${total} vendors`;
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tag = btn.dataset.tag;
+    if (activeFilters.has(tag)) {
+      activeFilters.delete(tag);
+      btn.classList.remove('active');
+    } else {
+      activeFilters.add(tag);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+clearBtn.addEventListener('click', () => {
+  activeFilters.clear();
+  filterBtns.forEach(b => b.classList.remove('active'));
+  searchInput.value = '';
+  applyFilters();
+});
+
+searchInput.addEventListener('input', applyFilters);
+
+sortSelect.addEventListener('change', () => {
+  currentSort = sortSelect.value;
+  renderCards();
+});
+
+// Initial render
+renderCards();
+</script>
+</body>
+</html>

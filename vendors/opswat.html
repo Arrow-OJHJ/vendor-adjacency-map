@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPSWAT – Arrow ECS UK Vendor Profile</title>
+  <style>
+    :root {
+      --blue-60: #0f62fe;
+      --blue-70: #0043ce;
+      --blue-10: #edf5ff;
+      --blue-20: #d0e2ff;
+      --gray-10: #f4f4f4;
+      --gray-20: #e0e0e0;
+      --gray-30: #c6c6c6;
+      --gray-50: #8d8d8d;
+      --gray-70: #525252;
+      --gray-90: #262626;
+      --gray-100: #161616;
+      --white: #ffffff;
+      --green-50: #198038;
+      --green-10: #defbe6;
+      --red-60: #da1e28;
+      --red-10: #fff1f1;
+      --yellow-20: #fdd13a;
+      --yellow-10: #fdf6dd;
+      --purple-60: #8a3ffc;
+      --purple-10: #f6f2ff;
+      --teal-50: #009d9a;
+      --teal-10: #d9fbfb;
+
+      --tag-dc:       #0f62fe;
+      --tag-bi:       #8a3ffc;
+      --tag-cloud:    #009d9a;
+      --tag-mob:      #198038;
+      --tag-sec:      #da1e28;
+      --tag-net:      #ee5396;
+      --tag-iot:      #ff832b;
+      --tag-arrow:    #0043ce;
+      --tag-devops:   #6929c4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background: var(--gray-10);
+      color: var(--gray-100);
+    }
+
+    header {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--gray-90);
+    }
+    .logo { font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; margin-right: 1.5rem; }
+    .divider { width: 1px; height: 24px; background: var(--gray-70); margin-right: 1.5rem; }
+    .breadcrumb { font-size: 14px; color: var(--gray-50); }
+    .breadcrumb a { color: var(--gray-30); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; color: var(--gray-70); }
+
+    .hero {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--red-60);
+    }
+    .hero-inner { max-width: 900px; }
+    .vendor-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-50); margin-bottom: 0.5rem; }
+    .hero h1 { font-size: 2.25rem; font-weight: 300; line-height: 1.2; margin-bottom: 0.75rem; }
+    .hero h1 strong { font-weight: 600; }
+    .tagline { font-size: 15px; color: var(--gray-30); max-width: 680px; margin-bottom: 1.25rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .hero-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; color: #fff;
+    }
+
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) { .page-body { grid-template-columns: 1fr; } }
+
+    .section {
+      background: var(--white);
+      border: 1px solid var(--gray-20);
+      margin-bottom: 1rem;
+    }
+    .section-header {
+      padding: 0.875rem 1.125rem;
+      border-bottom: 1px solid var(--gray-20);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-header h2 { font-size: 14px; font-weight: 600; }
+    .section-icon { display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex-shrink: 0; }
+    .section-body { padding: 1rem 1.125rem; }
+    .section-body p { margin-bottom: 0.875rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--gray-20);
+      margin-top: 0;
+    }
+    .product-card { background: var(--white); padding: 1rem; }
+    .product-card-name { font-size: 13px; font-weight: 600; margin-bottom: 0.375rem; }
+    .product-card-desc { font-size: 12px; color: var(--gray-70); margin-bottom: 0.5rem; }
+    .product-card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .mini-tag { font-size: 10px; font-weight: 600; background: var(--gray-10); color: var(--gray-70); padding: 0.15rem 0.45rem; border: 1px solid var(--gray-20); }
+
+    .crosssell-list { }
+    .crosssell-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto auto;
+      column-gap: 0.875rem;
+      row-gap: 0.125rem;
+      padding: 0.875rem 1.125rem;
+      border-bottom: 1px solid var(--gray-20);
+    }
+    .crosssell-item:last-child { border-bottom: none; }
+    .crosssell-badge {
+      grid-row: 1 / 4;
+      width: 4px;
+      border-radius: 0;
+      align-self: stretch;
+    }
+    .badge-complement { background: var(--green-50); }
+    .badge-partner    { background: var(--blue-60); }
+    .badge-expand     { background: var(--purple-60); }
+    .crosssell-vendor { font-size: 13px; font-weight: 600; color: var(--blue-60); text-decoration: none; }
+    .crosssell-vendor:hover { text-decoration: underline; }
+    .crosssell-play { font-size: 12px; font-weight: 600; color: var(--gray-70); text-transform: uppercase; letter-spacing: 0.03em; }
+    .crosssell-why { font-size: 13px; color: var(--gray-70); }
+
+    .competitor-list { }
+    .competitor-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1rem;
+      padding: 0.75rem 1.125rem;
+      border-bottom: 1px solid var(--gray-20);
+    }
+    .competitor-item:last-child { border-bottom: none; }
+    @media (max-width: 600px) { .competitor-item { grid-template-columns: 1fr; } }
+    .competitor-name { font-size: 13px; font-weight: 600; }
+    .competitor-space { font-size: 11px; color: var(--gray-50); margin-top: 0.125rem; }
+    .competitor-note { font-size: 13px; color: var(--gray-70); }
+
+    .icp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--gray-20);
+    }
+    .icp-card { background: var(--white); padding: 1rem; }
+    .icp-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-50); margin-bottom: 0.375rem; }
+    .icp-value { font-size: 13px; color: var(--gray-70); }
+
+    .sidebar-col { }
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--gray-20);
+      margin-bottom: 1rem;
+    }
+    .sidebar-card .section-header { padding: 0.75rem 1rem; }
+    .sidebar-card .section-body { padding: 0.875rem 1rem; }
+
+    .arrow-advantage-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .arrow-advantage-list li { font-size: 13px; color: var(--gray-70); padding-left: 1rem; position: relative; }
+    .arrow-advantage-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; background: var(--blue-60); }
+
+    .key-facts { }
+    .key-fact { padding: 0.625rem 1rem; border-bottom: 1px solid var(--gray-20); }
+    .key-fact:last-child { border-bottom: none; }
+    .key-fact-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-50); }
+    .key-fact-value { font-size: 13px; color: var(--gray-70); margin-top: 0.125rem; }
+
+    .legend { display: flex; flex-direction: column; gap: 0.5rem; }
+    .legend-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 13px; color: var(--gray-70); }
+    .legend-swatch { width: 12px; height: 12px; flex-shrink: 0; margin-top: 3px; }
+
+    footer {
+      background: var(--gray-100);
+      color: var(--gray-50);
+      padding: 1rem 2rem;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    footer a { color: var(--gray-50); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="../index.html">Arrow ECS UK</a>
+  <div class="divider"></div>
+  <nav class="breadcrumb">
+    <a href="../index.html">Vendor Line Card</a>
+    <span>›</span>
+    OPSWAT
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="vendor-label">Vendor Profile</div>
+    <h1><strong>OPSWAT</strong></h1>
+    <p class="tagline">Critical infrastructure protection, file security, and zero-trust data transfer for defence, government, and regulated industries.</p>
+    <div class="hero-tags">
+      <span class="hero-tag" style="background:var(--tag-sec)">Security</span>
+      <span class="hero-tag" style="background:var(--tag-net)">Networking</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="main-col">
+
+    <!-- Overview -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M17 22v-8h-4v2h2v6h-3v2h8v-2h-3zm-1-18a2 2 0 1 0 2 2 2 2 0 0 0-2-2z"/><path d="M16 2A14 14 0 1 0 30 16 14.016 14.016 0 0 0 16 2zm0 26A12 12 0 1 1 28 16 12.014 12.014 0 0 1 16 28z"/></svg>
+        </div>
+        <h2>Overview</h2>
+      </div>
+      <div class="section-body">
+        <p>OPSWAT is a cybersecurity company specialising in the protection of critical infrastructure and operational technology (OT) environments. Its products focus on securing the points where data enters and moves within highly sensitive networks – including air-gapped systems, industrial control environments, and regulated government facilities. The company's flagship capability is Content Disarm and Reconstruction (CDR), which sanitises files at the point of ingress rather than relying on signature-based detection alone.</p>
+        <p>Where most security vendors focus on perimeter defence or endpoint protection, OPSWAT targets the specific risk that arises when files, removable media, or data transfers cross security boundaries inside a protected environment. Its MetaDefender platform combines multi-engine malware scanning (using up to 30+ AV engines simultaneously), deep CDR, vulnerability assessment, and data loss prevention into a unified inspection workflow. The MetaDefender Kiosk is a physical hardware appliance that provides this inspection for USB drives and removable media before they enter a secured network.</p>
+        <p>Arrow ECS UK's OPSWAT book is concentrated in defence, intelligence, critical national infrastructure, and large regulated organisations – a customer profile that matches OPSWAT's design intent closely. Arrow sells across the full OPSWAT stack: hardware kiosks, software licences, SaaS-delivered inspection, support contracts, and professional services.</p>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 18H4V8h24z"/><path d="M8 12h4v2H8zm0 4h8v2H8zm0 4h4v2H8zm10-8h6v2h-6zm0 4h6v2h-6z"/></svg>
+        </div>
+        <h2>Arrow-Carried Portfolio</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50);">All products below are confirmed in Arrow ECS UK's 2025 sales data unless otherwise noted.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-name">MetaDefender Platform</div>
+          <div class="product-card-desc">The core software platform that orchestrates multi-engine malware scanning, CDR, and vulnerability assessment. Deployed on-premises or in private cloud. The most widely transacted OPSWAT product through Arrow.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Multi-scanning</span>
+            <span class="mini-tag">On-premises</span>
+            <span class="mini-tag">API-driven</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">MetaDefender Kiosk (K1001)</div>
+          <div class="product-card-desc">A physical hardware appliance that scans USB drives, CDs, and removable media before they enter a secured environment. Standard and FedRAMP-ready editions available. Confirmed in Arrow sales data as hardware (HWR) line items.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Hardware</span>
+            <span class="mini-tag">Removable media</span>
+            <span class="mini-tag">Air-gap</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Deep CDR Module</div>
+          <div class="product-card-desc">Content Disarm and Reconstruction – strips potentially malicious active content from over 100 file types and rebuilds a clean, functional version. Does not rely on signature detection; effective against zero-day file-based threats.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">CDR</span>
+            <span class="mini-tag">Zero-day</span>
+            <span class="mini-tag">File sanitisation</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Metascan Multi-Engine</div>
+          <div class="product-card-desc">Simultaneous scanning using multiple AV engines (5, 8, or 12 engine configurations available through Arrow). Higher engine counts increase detection rates; consensus-based verdicts reduce false positives.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Multi-AV</span>
+            <span class="mini-tag">Threat detection</span>
+            <span class="mini-tag">On-premises</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">MetaAccess NAC</div>
+          <div class="product-card-desc">Network Access Control that enforces device compliance before granting network access. Checks OS patch level, AV status, encryption, and configuration. Integrates with network infrastructure to enforce policy at the access layer.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">NAC</span>
+            <span class="mini-tag">Endpoint compliance</span>
+            <span class="mini-tag">Zero Trust</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">MetaDefender Vault</div>
+          <div class="product-card-desc">A secure file storage and workflow system that enforces sanitisation policies on files entering or leaving a vault. Files must pass CDR and scanning before they can be accessed or released – suited to secure cross-domain workflows.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Secure file storage</span>
+            <span class="mini-tag">Cross-domain</span>
+            <span class="mini-tag">Workflow</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">MetaDefender Email Gateway</div>
+          <div class="product-card-desc">Email security gateway that applies CDR and multi-engine scanning to email attachments before they reach end users. Suited to organisations that require sanitisation rather than quarantine as the primary response to suspicious attachments.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Email security</span>
+            <span class="mini-tag">CDR</span>
+            <span class="mini-tag">Gateway</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">MetaDefender Managed File Transfer</div>
+          <div class="product-card-desc">Secure file transfer with integrated CDR and scanning applied at transfer time. Replaces legacy MFT solutions with a security-first architecture – confirmed in Arrow sales data from late 2025, indicating an actively growing product line.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Secure MFT</span>
+            <span class="mini-tag">CDR</span>
+            <span class="mini-tag">File transfer</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">MetaDefender Cloud Prevention API</div>
+          <div class="product-card-desc">Cloud-delivered file inspection API for organisations that want to integrate CDR and multi-scanning into their own applications or workflows without hosting on-premises infrastructure.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SaaS</span>
+            <span class="mini-tag">API</span>
+            <span class="mini-tag">Cloud-delivered</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">OPSWAT Central Management</div>
+          <div class="product-card-desc">Centralised management console for deployed OPSWAT products. Provides policy management, reporting, and configuration across multiple MetaDefender nodes and Kiosk deployments from a single interface.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Management</span>
+            <span class="mini-tag">Policy</span>
+            <span class="mini-tag">Multi-site</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Support Tiers</div>
+          <div class="product-card-desc">Silver, Gold, and Platinum support tiers are available through Arrow, covering hardware maintenance, software updates, and access to OPSWAT engineering. All tiers confirmed in 2025 Arrow sales data.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Silver / Gold / Platinum</span>
+            <span class="mini-tag">Hardware maintenance</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cross-sell -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M29.707 19.293l-3-3a1 1 0 0 0-1.414 1.414L26.586 19H18v-6.586l1.293 1.293a1 1 0 0 0 1.414-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 1 0 1.414 1.414L16 12.414V19H7.414l1.293-1.293a1 1 0 1 0-1.414-1.414l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414-1.414L7.414 21H16v6.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L19 27.586V21h8.586l-1.293 1.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z"/></svg>
+        </div>
+        <h2>Cross-sell &amp; Expansion Opportunities</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="crosssell-list">
+
+          <!-- EVIDENCE: Integration partner – F5 APM + OPSWAT MetaAccess integration is documented in OPSWAT's technology partner catalogue and F5's integration ecosystem. Source: opswat.com/partners/technology -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-partner"></div>
+            <a class="crosssell-vendor" href="f5.html">F5 Networks</a>
+            <div class="crosssell-play">Zero Trust Access – NAC + Application Delivery</div>
+            <div class="crosssell-why">OPSWAT MetaAccess integrates with F5 BIG-IP Access Policy Manager (APM) to enforce device compliance checks before granting application access. A user attempting to reach an F5-protected application can be redirected to OPSWAT for endpoint assessment – if the device fails the policy check, access is denied. This is a documented integration that strengthens any Zero Trust network access conversation involving F5 APM.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated conceptually; Entrust PKI provides device certificates, OPSWAT MetaAccess checks them as part of compliance assessment -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="entrust.html">Entrust</a>
+            <div class="crosssell-play">Certificate-Based Device Identity in NAC Workflows</div>
+            <div class="crosssell-why">MetaAccess NAC checks device compliance including certificate validity. Entrust nShield HSMs provide the hardware root of trust for the PKI that issues those device certificates. In environments with high-assurance identity requirements – defence, finance, regulated government – the combination of Entrust hardware-backed PKI and OPSWAT device compliance creates a verifiable identity and access chain that neither vendor covers alone.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated; Black Duck secures the software supply chain, OPSWAT secures the environment the software runs in -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="blackduck.html">Black Duck</a>
+            <div class="crosssell-play">Secure Supply Chain + Secure Deployment Environment</div>
+            <div class="crosssell-why">Black Duck scans software for open-source vulnerabilities, licence risk, and known CVEs before it is deployed. OPSWAT controls what files and executables can enter the operational environment where that software runs. The two address different points in the same risk chain – building clean software versus keeping the environment it operates in clean. Particularly relevant in defence and industrial environments where both software provenance and physical media security are required.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated; IBM QRadar ingests security events; OPSWAT generates rich file and device scan events suitable for SIEM ingestion -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="ibm.html">IBM Security</a>
+            <div class="crosssell-play">OPSWAT Events into IBM QRadar for SIEM Enrichment</div>
+            <div class="crosssell-why">OPSWAT MetaDefender generates detailed file scan, CDR, and device compliance events. IBM QRadar can ingest these events via syslog or API, correlating file-based threats detected at the perimeter with broader network and identity activity. In environments running IBM QRadar for SOC operations, OPSWAT is a valuable additional data source – particularly for air-gapped or OT network zones that lack traditional endpoint telemetry.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--gray-70)"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 2c2.495 0 4.813.768 6.734 2.079L5.08 22.734A11.943 11.943 0 0 1 4 16C4 9.373 9.373 4 16 4zm0 24c-2.495 0-4.813-.768-6.734-2.079l17.655-17.655A11.943 11.943 0 0 1 28 16c0 6.627-5.373 12-12 12z"/></svg>
+        </div>
+        <h2>Competitive Landscape</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50); margin-bottom:1rem;">Vendors you are likely to encounter in the same deals. OPSWAT's critical infrastructure focus gives it a distinct market position.</p>
+      </div>
+      <div class="competitor-list">
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Forcepoint</div>
+            <div class="competitor-space">CDR / Cross-Domain Solutions</div>
+          </div>
+          <div class="competitor-note">Forcepoint's High Speed Guard and Cross Domain Solutions compete directly with OPSWAT in government and defence environments requiring data transfer between security domains. Forcepoint has stronger government certifications in some markets (NSA CSFC programme). OPSWAT competes on breadth – its CDR and multi-scanning platform covers more file types and protocols than purpose-built cross-domain appliances.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Deep Secure (now Fortra)</div>
+            <div class="competitor-space">CDR / Threat Removal</div>
+          </div>
+          <div class="competitor-note">Deep Secure (acquired by Fortra) focuses on threat removal and transformation for government and enterprise. Competes with OPSWAT CDR primarily in UK government accounts. OPSWAT differentiates on the hardware Kiosk (removable media entry point) and the integrated multi-engine scanning layer that Deep Secure does not offer as standard.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Glasswall</div>
+            <div class="competitor-space">CDR</div>
+          </div>
+          <div class="competitor-note">Glasswall is a specialist CDR vendor focused on document sanitisation – it competes with OPSWAT's CDR module specifically. Glasswall's approach is document regeneration (rebuild from scratch to specification); OPSWAT's is transformation (strip active content, preserve structure). Glasswall has traction in UK government (NCSC guidance references both approaches). OPSWAT's advantage is the wider platform – Glasswall is CDR-only.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Claroty / Nozomi</div>
+            <div class="competitor-space">OT / ICS Security</div>
+          </div>
+          <div class="competitor-note">Claroty and Nozomi Networks dominate OT network visibility and detection. They are not direct competitors to OPSWAT's CDR/file-scanning capability but appear on the same shortlists in industrial and CNI environments. OPSWAT focuses on data ingress control; Claroty/Nozomi focus on network monitoring and anomaly detection. Both are frequently deployed together in mature OT security programmes.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ICP -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm10 28H6a2 2 0 0 1-2-2v-1a9 9 0 0 1 9-9h6a9 9 0 0 1 9 9v1a2 2 0 0 1-2 2zm-20-3h20v-1a7 7 0 0 0-7-7h-6a7 7 0 0 0-7 7z"/></svg>
+        </div>
+        <h2>Ideal Customer Profile</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="icp-grid">
+          <div class="icp-card">
+            <div class="icp-label">Organisation Size</div>
+            <div class="icp-value">Mid-market to large enterprise and government. No minimum size – Kiosk deployments scale from single-site to enterprise-wide. Arrow's OPSWAT book includes SME and large-organisation end users.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Verticals</div>
+            <div class="icp-value">Defence and intelligence, central government, critical national infrastructure (energy, utilities, transport), regulated financial services, and large telco organisations. Confirmed from Arrow 2025 sales data.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Trigger Events</div>
+            <div class="icp-value">NIS2 or DORA compliance project; OT/ICS security programme; air-gapped network requirement; audit finding around removable media control; cross-domain data transfer project; zero-trust initiative.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Key Personas</div>
+            <div class="icp-value">CISO, Head of Cyber Security, OT Security Lead, IT Security Architect, Procurement (in defence accounts). Conversations often involve both IT and OT security stakeholders simultaneously.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-col">
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Arrow Advantage</h2>
+      </div>
+      <div class="section-body">
+        <ul class="arrow-advantage-list">
+          <li>Arrow ECS UK is an authorised OPSWAT distributor with an active commercial relationship across the full product portfolio</li>
+          <li>Arrow transacts OPSWAT hardware (Kiosk appliances), software, SaaS, support contracts, and professional services – the complete customer lifecycle</li>
+          <li>Arrow's pre-sales team can support scoping and configuration for MetaDefender Platform and Kiosk deployments</li>
+          <li>Gold and Platinum support contracts available through Arrow, ensuring customers have direct access to OPSWAT engineering</li>
+          <li>Arrow's existing relationships in defence and CNI accounts align directly with OPSWAT's strongest verticals</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Key Facts</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact">
+            <div class="key-fact-label">Founded</div>
+            <div class="key-fact-value">2002</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Headquarters</div>
+            <div class="key-fact-value">Tampa, Florida, USA</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Ownership</div>
+            <div class="key-fact-value">Private (backed by Goldman Sachs and Brighton Park Capital)</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Arrow Categories</div>
+            <div class="key-fact-value">Security · Networking</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Key Certifications</div>
+            <div class="key-fact-value">FIPS 140-2, Common Criteria, NCSC-aligned CDR, FedRAMP (Kiosk)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Cross-sell Legend</h2>
+      </div>
+      <div class="section-body">
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--green-50)"></div>
+            <span><strong>Complementary</strong> – different problem, typically deployed together</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--blue-60)"></div>
+            <span><strong>Integration partner</strong> – confirmed technical integration exists</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--purple-60)"></div>
+            <span><strong>Expansion</strong> – natural upsell or expansion in the same deal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Related Vendors</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('f5.html','_blank')">
+            <div class="key-fact-label">Application Delivery &amp; NAC</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">F5 Networks &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('entrust.html','_blank')">
+            <div class="key-fact-label">PKI &amp; Device Certificates</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Entrust &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('blackduck.html','_blank')">
+            <div class="key-fact-label">Software Supply Chain Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Black Duck &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('ibm.html','_blank')">
+            <div class="key-fact-label">SIEM &amp; Security Analytics</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">IBM &rsaquo;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /page-body -->
+
+<footer>
+  <span>© 2026 Arrow Electronics, Inc. All rights reserved.</span>
+  <span style="color:var(--gray-50); margin: 0 1rem;">·</span>
+  <span style="color:var(--gray-50)">Last updated: 2026-09</span>
+  <a href="https://www.arrow.com/globalecs/uk/products/" style="margin-left:auto;">arrow.com/globalecs/uk/products</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,783 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IBM – Arrow ECS UK Vendor Profile</title>
+  <style>
+    :root {
+      --blue-60: #0f62fe;
+      --blue-70: #0043ce;
+      --blue-10: #edf5ff;
+      --blue-20: #d0e2ff;
+      --gray-10: #f4f4f4;
+      --gray-20: #e0e0e0;
+      --gray-30: #c6c6c6;
+      --gray-50: #8d8d8d;
+      --gray-70: #525252;
+      --gray-90: #262626;
+      --gray-100: #161616;
+      --white: #ffffff;
+      --green-50: #198038;
+      --green-10: #defbe6;
+      --red-60: #da1e28;
+      --red-10: #fff1f1;
+      --yellow-20: #fdd13a;
+      --yellow-10: #fdf6dd;
+      --purple-60: #8a3ffc;
+      --purple-10: #f6f2ff;
+      --teal-50: #009d9a;
+      --teal-10: #d9fbfb;
+
+      --tag-dc:       #0f62fe;
+      --tag-bi:       #8a3ffc;
+      --tag-cloud:    #009d9a;
+      --tag-mob:      #198038;
+      --tag-sec:      #da1e28;
+      --tag-net:      #ee5396;
+      --tag-iot:      #ff832b;
+      --tag-arrow:    #0043ce;
+      --tag-devops:   #6929c4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background: var(--gray-10);
+      color: var(--gray-100);
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--gray-90);
+    }
+    .logo { font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; margin-right: 1.5rem; }
+    .divider { width: 1px; height: 24px; background: var(--gray-70); margin-right: 1.5rem; }
+    .breadcrumb { font-size: 14px; color: var(--gray-50); }
+    .breadcrumb a { color: var(--gray-30); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; color: var(--gray-70); }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--blue-60);
+    }
+    .hero-inner { max-width: 900px; }
+    .vendor-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-60);
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 strong { font-weight: 600; }
+    .hero .tagline {
+      font-size: 16px;
+      color: var(--gray-30);
+      max-width: 620px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      display: inline-flex; align-items: center;
+      padding: 3px 10px; font-size: 11px; font-weight: 500;
+      color: var(--white); white-space: nowrap;
+    }
+    .tag[data-tag="Data Centre"]           { background: var(--tag-dc); }
+    .tag[data-tag="Business Intelligence"] { background: var(--tag-bi); }
+    .tag[data-tag="Cloud"]                 { background: var(--tag-cloud); }
+    .tag[data-tag="Security"]              { background: var(--tag-sec); }
+    .tag[data-tag="Networking"]            { background: var(--tag-net); }
+    .tag[data-tag="IoT and Edge"]          { background: var(--tag-iot); }
+    .tag[data-tag="DevOps"]                { background: var(--tag-devops); }
+    .tag[data-tag="ArrowSphere"]           { background: var(--tag-arrow); }
+    .tag[data-tag="Mobility"]              { background: var(--tag-mob); }
+
+    /* ── Layout ── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .page-body { grid-template-columns: 1fr; }
+    }
+
+    /* ── Sections ── */
+    .section {
+      background: var(--white);
+      border: 1px solid var(--gray-20);
+      margin-bottom: 1.5rem;
+    }
+    .section-header {
+      padding: 1rem 1.25rem 0.875rem;
+      border-bottom: 1px solid var(--gray-20);
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+    .section-header h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-100);
+      letter-spacing: 0.01em;
+    }
+    .section-icon {
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-body { padding: 1.25rem; }
+
+    /* ── Overview ── */
+    .overview-text {
+      font-size: 14px;
+      color: var(--gray-70);
+      line-height: 1.7;
+    }
+
+    /* ── Product lines ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--gray-20);
+      border: 1px solid var(--gray-20);
+    }
+    .product-card {
+      background: var(--white);
+      padding: 1rem 1.125rem;
+    }
+    .product-card-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-100);
+      margin-bottom: 0.25rem;
+    }
+    .product-card-desc {
+      font-size: 12px;
+      color: var(--gray-70);
+      line-height: 1.5;
+    }
+    .product-card-tags {
+      margin-top: 0.5rem;
+      display: flex; flex-wrap: wrap; gap: 3px;
+    }
+    .mini-tag {
+      font-size: 10px;
+      font-weight: 500;
+      padding: 1px 6px;
+      background: var(--gray-10);
+      color: var(--gray-70);
+      border: 1px solid var(--gray-20);
+    }
+
+    /* ── Cross-sell cards ── */
+    .crosssell-list { display: flex; flex-direction: column; gap: 1px; background: var(--gray-20); border: 1px solid var(--gray-20); }
+    .crosssell-item {
+      background: var(--white);
+      padding: 1rem 1.125rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 1rem;
+      align-items: start;
+    }
+    .crosssell-item:hover { background: var(--blue-10); }
+    .crosssell-vendor {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue-60);
+      grid-column: 2;
+      text-decoration: none;
+    }
+    .crosssell-vendor:hover { text-decoration: underline; }
+    .crosssell-play {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-50);
+      grid-column: 2;
+      margin-top: 1px;
+    }
+    .crosssell-why {
+      font-size: 12px;
+      color: var(--gray-70);
+      line-height: 1.55;
+      grid-column: 2;
+      margin-top: 4px;
+    }
+    .crosssell-badge {
+      grid-column: 1;
+      grid-row: 1 / 4;
+      width: 8px;
+      align-self: stretch;
+      min-height: 48px;
+    }
+    .badge-complement { background: var(--green-50); }
+    .badge-partner    { background: var(--blue-60); }
+    .badge-expand     { background: var(--purple-60); }
+
+    /* ── Competitor table ── */
+    .competitor-list { display: flex; flex-direction: column; gap: 1px; background: var(--gray-20); border: 1px solid var(--gray-20); }
+    .competitor-item {
+      background: var(--white);
+      padding: 0.875rem 1.125rem;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 1rem;
+      align-items: start;
+    }
+    .competitor-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-100);
+    }
+    .competitor-space {
+      font-size: 11px;
+      color: var(--gray-50);
+      margin-top: 2px;
+    }
+    .competitor-note {
+      font-size: 12px;
+      color: var(--gray-70);
+      line-height: 1.5;
+    }
+
+    /* ── ICP section ── */
+    .icp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--gray-20);
+      border: 1px solid var(--gray-20);
+    }
+    .icp-card {
+      background: var(--white);
+      padding: 1rem 1.125rem;
+    }
+    .icp-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-50);
+      margin-bottom: 0.375rem;
+    }
+    .icp-value {
+      font-size: 13px;
+      color: var(--gray-100);
+      line-height: 1.5;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--gray-20);
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card .section-header { padding: 0.875rem 1rem 0.75rem; }
+    .sidebar-card .section-body   { padding: 1rem; }
+
+    .arrow-advantage-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .arrow-advantage-list li {
+      font-size: 13px;
+      color: var(--gray-70);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .arrow-advantage-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.45em;
+      width: 6px; height: 6px;
+      background: var(--blue-60);
+    }
+
+    .key-facts { display: flex; flex-direction: column; gap: 1px; background: var(--gray-20); border: 1px solid var(--gray-20); }
+    .key-fact {
+      background: var(--white);
+      padding: 0.75rem 1rem;
+    }
+    .key-fact-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-50); margin-bottom: 2px; }
+    .key-fact-value { font-size: 13px; color: var(--gray-100); }
+
+    .legend { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 12px; color: var(--gray-70); }
+    .legend-swatch { width: 8px; height: 20px; flex-shrink: 0; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--gray-100);
+      color: var(--gray-50);
+      font-size: 12px;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--gray-90);
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: space-between; align-items: center;
+      margin-top: 2rem;
+    }
+    footer a { color: var(--gray-30); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .page-body { padding: 1rem; }
+      header { padding: 0 1rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      footer { padding: 1rem; }
+      .competitor-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="../index.html">Arrow ECS</a>
+  <div class="divider"></div>
+  <nav class="breadcrumb">
+    <a href="../index.html">Vendor Line Card</a>
+    <span>›</span>
+    IBM
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="vendor-label">Vendor Profile</div>
+    <h1><strong>IBM</strong></h1>
+    <p class="tagline">Enterprise technology spanning AI, hybrid cloud, infrastructure, security, and software – one of Arrow ECS UK's broadest and deepest vendor relationships.</p>
+    <div class="hero-tags">
+      <span class="tag" data-tag="Data Centre">Data Centre</span>
+      <span class="tag" data-tag="Business Intelligence">Business Intelligence</span>
+      <span class="tag" data-tag="Cloud">Cloud</span>
+      <span class="tag" data-tag="Security">Security</span>
+      <span class="tag" data-tag="Networking">Networking</span>
+      <span class="tag" data-tag="IoT and Edge">IoT and Edge</span>
+      <span class="tag" data-tag="DevOps">DevOps</span>
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+
+  <!-- ── MAIN COLUMN ── -->
+  <div class="main-col">
+
+    <!-- Overview -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 6a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 16 8zm4 16.125h-8v-2.25h2.875v-5.75H13v-2.25h4.125v8H20z"/></svg>
+        </div>
+        <h2>Overview</h2>
+      </div>
+      <div class="section-body">
+        <p class="overview-text">IBM is one of the world's oldest and most diversified technology companies, with a portfolio that spans every layer of enterprise IT. Through Arrow ECS UK, IBM's portfolio covers infrastructure hardware (Power Systems, IBM Z mainframes, storage), a deep software catalogue (Db2, MQ, CICS, WebSphere, OpenPages), an expanding AI platform (watsonx), and a security suite (QRadar SIEM, Guardium data security, Verify IAM). IBM also delivers cloud services – IaaS, PaaS, and SaaS – available via ArrowSphere.</p>
+        <p class="overview-text" style="margin-top:0.875rem;">For sales teams, IBM is a high-value, long-cycle vendor. Deals are often infrastructure-led (a Power or Storage refresh) but the real expansion opportunity is in software and AI layered on top of that infrastructure – and in the adjacent vendors that complement IBM's platform.</p>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 18H4V8h24z"/><path d="M8 12h16v2H8zm0 6h10v2H8z"/></svg>
+        </div>
+        <h2>Arrow-Carried Portfolio</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="product-grid">
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Power Systems</div>
+            <div class="product-card-desc">RISC-based enterprise servers running AIX, IBM i, and Linux. Dominant in banking, insurance, and ERP workloads. Power10 generation delivers on-chip AI inference.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Data Centre</span>
+              <span class="mini-tag">AIX / IBM i</span>
+              <span class="mini-tag">ERP</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Z / LinuxONE</div>
+            <div class="product-card-desc">Mainframe platform for mission-critical transaction processing. LinuxONE is the open-source variant. Unmatched availability (99.99999%), security, and throughput at scale.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Data Centre</span>
+              <span class="mini-tag">Mainframe</span>
+              <span class="mini-tag">Security</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Storage (FlashSystem & Tape)</div>
+            <div class="product-card-desc">FlashSystem all-flash arrays for primary storage; IBM Tape (TS series) for long-term archival and ransomware-resilient air-gapped backup. Also includes IBM Storwize and SAN Volume Controller.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Data Centre</span>
+              <span class="mini-tag">All-Flash</span>
+              <span class="mini-tag">Tape / Archive</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM watsonx (AI Platform)</div>
+            <div class="product-card-desc">watsonx.ai for building and deploying foundation models; watsonx.data for governed data lakehouse; watsonx.governance for AI lifecycle compliance. IBM's primary AI growth vehicle.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Business Intelligence</span>
+              <span class="mini-tag">AI / ML</span>
+              <span class="mini-tag">Cloud</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Security (QRadar, Guardium, Verify)</div>
+            <div class="product-card-desc">QRadar SIEM/SOAR for threat detection; Guardium for database activity monitoring and data security; Verify for identity and access management. Increasingly cloud-delivered via IBM Security QRadar Suite.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Security</span>
+              <span class="mini-tag">SIEM</span>
+              <span class="mini-tag">IAM</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Software (Middleware)</div>
+            <div class="product-card-desc">Db2 (relational database), MQ (enterprise messaging), CICS (transaction processing), WebSphere Application Server, and OpenPages (GRC). The backbone of enterprise application stacks.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Data Centre</span>
+              <span class="mini-tag">Middleware</span>
+              <span class="mini-tag">DevOps</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Cloud (IaaS / PaaS / SaaS)</div>
+            <div class="product-card-desc">IBM Cloud Bare Metal, Virtual Servers, Red Hat OpenShift on IBM Cloud, and IBM SaaS applications. Available as SKUs through Arrow and transactable via ArrowSphere.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">Cloud</span>
+              <span class="mini-tag">ArrowSphere</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-name">IBM Automation &amp; DevOps</div>
+            <div class="product-card-desc">IBM Turbonomic (application resource management), IBM Instana (observability), IBM Engineering Lifecycle Management, and IBM UrbanCode Deploy. Targets FinOps and DevSecOps buyers.</div>
+            <div class="product-card-tags">
+              <span class="mini-tag">DevOps</span>
+              <span class="mini-tag">FinOps</span>
+              <span class="mini-tag">Observability</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Cross-sell -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M29.707 19.293l-3-3a1 1 0 0 0-1.414 1.414L26.586 19H18v-6.586l1.293 1.293a1 1 0 0 0 1.414-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 1 0 1.414 1.414L16 12.414V19H7.414l1.293-1.293a1 1 0 1 0-1.414-1.414l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414-1.414L7.414 21H16v6.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L19 27.586V21h8.586l-1.293 1.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z"/></svg>
+        </div>
+        <h2>Cross-sell &amp; Expansion Opportunities</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="crosssell-list">
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="#">Splunk</a>
+            <div class="crosssell-play">SIEM Alongside or Instead of QRadar</div>
+            <div class="crosssell-why">Where a customer already runs Splunk, IBM QRadar can feed into it as a data source. Where QRadar is the SIEM, Splunk may already be in use for operational analytics – the two coexist more often than you'd expect in large enterprises. Leads with QRadar should be aware Splunk will be on the shortlist.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="#">Commvault</a>
+            <div class="crosssell-play">Enterprise Data Protection on IBM Infrastructure</div>
+            <div class="crosssell-why">Commvault has strong IBM integrations including IBM Spectrum Protect (now Storage Protect) awareness and IBM Tape support. In large enterprises with mixed IBM and non-IBM environments, Commvault can act as a single backup platform across all of it.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="#">NetApp</a>
+            <div class="crosssell-play">Storage Complement for Non-IBM Workloads</div>
+            <div class="crosssell-why">Customers with IBM storage for IBM workloads (Power/Z) frequently use NetApp for their VMware and file workloads. IBM and NetApp coexist naturally in the same data centre. A storage conversation touching one often surfaces the other.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-expand"></div>
+            <a class="crosssell-vendor" href="#">SNYK</a>
+            <div class="crosssell-play">DevSecOps Alongside IBM DevOps Tools</div>
+            <div class="crosssell-why">Customers buying IBM UrbanCode or IBM Engineering tools are building DevOps practices. SNYK plugs into those pipelines to add developer-first security scanning for code, containers, and open-source dependencies – a natural expansion sell in any IBM DevOps conversation.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-expand"></div>
+            <a class="crosssell-vendor" href="entrust.html">Entrust</a>
+            <div class="crosssell-play">HSM for IBM Z Cryptographic Security</div>
+            <div class="crosssell-why">IBM Z's built-in CPACF and Crypto Express processors often operate alongside external HSM infrastructure for key escrow and high-assurance certificate management. Entrust nShield HSMs provide the FIPS 140-2 Level 3 hardware root of trust that regulated customers require alongside IBM Z – a natural expansion in any IBM Z security conversation.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="#">HCLSoftware</a>
+            <div class="crosssell-play">IBM Middleware Heritage – Legacy Modernisation</div>
+            <div class="crosssell-why">HCLSoftware acquired several IBM software products (Domino, Connections, BigFix, Unica). Customers running these alongside remaining IBM middleware are a natural combined conversation. HCL and IBM frequently appear together in the same enterprise accounts.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="#">Turbonomic / IBM Automation</a>
+            <div class="crosssell-play">FinOps &amp; Resource Optimisation</div>
+            <div class="crosssell-why">IBM Turbonomic (now part of IBM) is often sold separately into cloud and virtualisation conversations. Customers with IBM Cloud spend or hybrid VMware/IBM environments can reduce waste significantly – a strong conversation when procurement is pressuring on cloud bills.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="opswat.html">OPSWAT</a>
+            <div class="crosssell-play">OPSWAT Events into IBM QRadar for SIEM Enrichment</div>
+            <div class="crosssell-why">OPSWAT MetaDefender generates detailed file scan, CDR, and device compliance events. IBM QRadar can ingest these events via syslog or API, correlating file-based threats with broader network and identity activity in the SOC. In environments running IBM QRadar where OT, air-gapped networks, or removable media control is also required, OPSWAT is a complementary data source and control layer that strengthens the overall security posture.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="f5.html">F5 Networks</a>
+            <div class="crosssell-play">F5 WAF &amp; APM Events into IBM QRadar</div>
+            <div class="crosssell-why">F5 BIG-IP WAF and Access Policy Manager generate detailed application-layer security events. IBM QRadar can ingest F5 syslog feeds, adding application security visibility to the SOC alongside network and identity event data. F5 BIG-IP hardware is also deployed on IBM infrastructure in enterprise data centres – IBM Power and IBM Z environments commonly co-exist with F5 ADC layers in front of their application interfaces.</div>
+          </div>
+
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-expand"></div>
+            <a class="crosssell-vendor" href="blackduck.html">Black Duck</a>
+            <div class="crosssell-play">Open-Source Security in the IBM DevOps Pipeline</div>
+            <div class="crosssell-why">Customers building software with IBM DevOps tools (IBM UrbanCode Deploy, IBM Engineering Lifecycle Management) are running CI/CD pipelines where Black Duck provides open-source security scanning. IBM UK itself appears as a Black Duck end user in Arrow's 2025 channel data – confirming co-deployment at enterprise scale. Any IBM DevOps conversation with a customer that builds software internally should include a discussion of their open-source security posture.</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--gray-70)"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 2c2.495 0 4.813.768 6.734 2.079L5.08 22.734A11.943 11.943 0 0 1 4 16C4 9.373 9.373 4 16 4zm0 24c-2.495 0-4.813-.768-6.734-2.079l17.655-17.655A11.943 11.943 0 0 1 28 16c0 6.627-5.373 12-12 12z"/></svg>
+        </div>
+        <h2>Competitive Landscape</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50); margin-bottom:1rem;">Vendors you are likely to encounter in the same deals. Knowing the landscape helps frame IBM's strengths.</p>
+      </div>
+      <div class="competitor-list">
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Dell Technologies</div>
+            <div class="competitor-space">Infrastructure / Storage</div>
+          </div>
+          <div class="competitor-note">Dell PowerEdge competes with IBM Power in x86 workloads; Dell PowerStore/Unity competes with IBM FlashSystem in mid-range all-flash. Dell is the most common alternative in storage deals. IBM's advantage: Power and Z workloads have no credible Dell equivalent – they're platform decisions, not commodity comparisons.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">HPE</div>
+            <div class="competitor-space">Infrastructure / Storage</div>
+          </div>
+          <div class="competitor-note">HPE Alletra and Nimble compete with IBM FlashSystem; HPE ProLiant with IBM Power on Linux workloads. HPE GreenLake (as-a-service) is a counterpart to IBM's hybrid cloud model. IBM differentiates on workload affinity – particularly for IBM i, AIX, and mainframe-adjacent workloads where HPE has no presence.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Palo Alto Networks</div>
+            <div class="competitor-space">Security (SIEM / SOAR)</div>
+          </div>
+          <div class="competitor-note">Palo Alto Cortex XSIAM is the primary modern alternative to IBM QRadar in SIEM/SOAR consolidation deals. Palo Alto leads on UX and AI-native narrative; IBM leads on depth of integration with mainframe and IBM middleware audit data, and on regulated-industry compliance posture.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Microsoft Azure</div>
+            <div class="competitor-space">Cloud / AI</div>
+          </div>
+          <div class="competitor-note">Azure competes with IBM Cloud for cloud workloads, and Microsoft Copilot competes with IBM watsonx in enterprise AI. IBM's differentiation is governance, data privacy, and suitability for regulated industries – watsonx.governance has no direct Microsoft equivalent. IBM also wins where customers need on-premises AI inference (Power10 on-chip).</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Pure Storage</div>
+            <div class="competitor-space">All-Flash Storage</div>
+          </div>
+          <div class="competitor-note">Pure FlashArray is a common alternative to IBM FlashSystem in pure all-flash deals. Pure's Evergreen model (no forklift upgrades) is a strong commercial differentiator. IBM counters with deeper integration with IBM workloads, Safeguarded Copy (immutable snapshots), and the full-stack story with IBM Spectrum Virtualize.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ICP -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm10 28H6a2 2 0 0 1-2-2v-1a9 9 0 0 1 9-9h6a9 9 0 0 1 9 9v1a2 2 0 0 1-2 2zm-20-3h20v-1a7 7 0 0 0-7-7h-6a7 7 0 0 0-7 7z"/></svg>
+        </div>
+        <h2>Ideal Customer Profile</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="icp-grid">
+          <div class="icp-card">
+            <div class="icp-label">Organisation Size</div>
+            <div class="icp-value">Enterprise and upper mid-market. IBM hardware especially targets organisations with 500+ employees. IBM software licensing scales across all sizes.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Verticals</div>
+            <div class="icp-value">Financial services, insurance, retail banking, public sector, healthcare, telco, and utilities – particularly those running legacy IBM platforms (COBOL, IBM i, mainframe).</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Trigger Events</div>
+            <div class="icp-value">End-of-support on older Power / Storage hardware; mainframe capacity upgrade; AI strategy mandate; SOC modernisation; data governance / compliance project.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Key Personas</div>
+            <div class="icp-value">CTO, IT Director, Head of Infrastructure, CISO (for QRadar/Guardium), Chief Data Officer (for watsonx). IBM decisions rarely happen below Director level.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- ── SIDEBAR ── -->
+  <div class="sidebar-col">
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Arrow Advantage</h2>
+      </div>
+      <div class="section-body">
+        <ul class="arrow-advantage-list">
+          <li>Arrow is an IBM Premier Business Partner with authorisations across IBM Power, Storage, Z, Software, and Security</li>
+          <li>IBM Cloud SKUs transactable through ArrowSphere – enabling partners to bundle cloud with on-prem hardware</li>
+          <li>Arrow's IBM-accredited pre-sales team can support technical scoping for Power, FlashSystem, and Z opportunities</li>
+          <li>Access to IBM deal registration, Business Partner pricing tiers, and co-selling programmes</li>
+          <li>Arrow can provide IBM Storage as-a-service (consumption-based) models for partners who need flexible commercial terms</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Key Facts</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact">
+            <div class="key-fact-label">Founded</div>
+            <div class="key-fact-value">1911 (113 years in operation)</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Headquarters</div>
+            <div class="key-fact-value">Armonk, New York, USA</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Revenue (2024)</div>
+            <div class="key-fact-value">~$62.8 billion</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Arrow Categories</div>
+            <div class="key-fact-value">Data Centre · Cloud · Security · BI · Networking · IoT &amp; Edge · DevOps</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">ArrowSphere</div>
+            <div class="key-fact-value">IBM Cloud SKUs available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Cross-sell Legend</h2>
+      </div>
+      <div class="section-body">
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--green-50)"></div>
+            <span><strong>Complementary</strong> – different problem, typically deployed together</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--blue-60)"></div>
+            <span><strong>Integration partner</strong> – confirmed technical integration exists</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--purple-60)"></div>
+            <span><strong>Expansion</strong> – natural upsell or expansion in the same deal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Related Vendors</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('opswat.html','_blank')">
+            <div class="key-fact-label">Critical Infrastructure Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">OPSWAT &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('f5.html','_blank')">
+            <div class="key-fact-label">Application Delivery &amp; Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">F5 Networks &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('entrust.html','_blank')">
+            <div class="key-fact-label">HSM &amp; Cryptographic Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Entrust &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('blackduck.html','_blank')">
+            <div class="key-fact-label">Open-Source Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Black Duck &rsaquo;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /page-body -->
+
+<footer>
+  <span>© 2026 Arrow Electronics, Inc. All rights reserved.</span>
+  <span style="color:var(--gray-50); margin: 0 1rem;">·</span>
+  <span style="color:var(--gray-50)">Last updated: 2026-09</span>
+  <a href="https://www.arrow.com/globalecs/uk/products/" style="margin-left:auto;">arrow.com/globalecs/uk/products</a>
+</footer>
+
+</body>
+</html>

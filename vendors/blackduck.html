@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Duck – Arrow ECS UK Vendor Profile</title>
+  <style>
+    :root {
+      --blue-60: #0f62fe;
+      --blue-70: #0043ce;
+      --blue-10: #edf5ff;
+      --blue-20: #d0e2ff;
+      --gray-10: #f4f4f4;
+      --gray-20: #e0e0e0;
+      --gray-30: #c6c6c6;
+      --gray-50: #8d8d8d;
+      --gray-70: #525252;
+      --gray-90: #262626;
+      --gray-100: #161616;
+      --white: #ffffff;
+      --green-50: #198038;
+      --green-10: #defbe6;
+      --red-60: #da1e28;
+      --red-10: #fff1f1;
+      --yellow-20: #fdd13a;
+      --yellow-10: #fdf6dd;
+      --purple-60: #8a3ffc;
+      --purple-10: #f6f2ff;
+      --teal-50: #009d9a;
+      --teal-10: #d9fbfb;
+
+      --tag-dc:       #0f62fe;
+      --tag-bi:       #8a3ffc;
+      --tag-cloud:    #009d9a;
+      --tag-mob:      #198038;
+      --tag-sec:      #da1e28;
+      --tag-net:      #ee5396;
+      --tag-iot:      #ff832b;
+      --tag-arrow:    #0043ce;
+      --tag-devops:   #6929c4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background: var(--gray-10);
+      color: var(--gray-100);
+    }
+
+    header {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--gray-90);
+    }
+    .logo { font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; margin-right: 1.5rem; }
+    .divider { width: 1px; height: 24px; background: var(--gray-70); margin-right: 1.5rem; }
+    .breadcrumb { font-size: 14px; color: var(--gray-50); }
+    .breadcrumb a { color: var(--gray-30); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; color: var(--gray-70); }
+
+    .hero {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--tag-devops);
+    }
+    .hero-inner { max-width: 900px; }
+    .vendor-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-50); margin-bottom: 0.5rem; }
+    .hero h1 { font-size: 2.25rem; font-weight: 300; line-height: 1.2; margin-bottom: 0.75rem; }
+    .hero h1 strong { font-weight: 600; }
+    .tagline { font-size: 15px; color: var(--gray-30); max-width: 680px; margin-bottom: 1.25rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.2rem 0.6rem; color: #fff; }
+
+    .page-body {
+      max-width: 1100px; margin: 0 auto; padding: 2rem;
+      display: grid; grid-template-columns: 1fr 320px; gap: 1.5rem; align-items: start;
+    }
+    @media (max-width: 800px) { .page-body { grid-template-columns: 1fr; } }
+
+    .section { background: var(--white); border: 1px solid var(--gray-20); margin-bottom: 1rem; }
+    .section-header { padding: 0.875rem 1.125rem; border-bottom: 1px solid var(--gray-20); display: flex; align-items: center; gap: 0.5rem; }
+    .section-header h2 { font-size: 14px; font-weight: 600; }
+    .section-icon { display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex-shrink: 0; }
+    .section-body { padding: 1rem 1.125rem; }
+    .section-body p { margin-bottom: 0.875rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--gray-20); }
+    .product-card { background: var(--white); padding: 1rem; }
+    .product-card-name { font-size: 13px; font-weight: 600; margin-bottom: 0.375rem; }
+    .product-card-desc { font-size: 12px; color: var(--gray-70); margin-bottom: 0.5rem; }
+    .product-card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .mini-tag { font-size: 10px; font-weight: 600; background: var(--gray-10); color: var(--gray-70); padding: 0.15rem 0.45rem; border: 1px solid var(--gray-20); }
+
+    .crosssell-list { }
+    .crosssell-item { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto auto; column-gap: 0.875rem; row-gap: 0.125rem; padding: 0.875rem 1.125rem; border-bottom: 1px solid var(--gray-20); }
+    .crosssell-item:last-child { border-bottom: none; }
+    .crosssell-badge { grid-row: 1 / 4; width: 4px; border-radius: 0; align-self: stretch; }
+    .badge-complement { background: var(--green-50); }
+    .badge-partner    { background: var(--blue-60); }
+    .badge-expand     { background: var(--purple-60); }
+    .crosssell-vendor { font-size: 13px; font-weight: 600; color: var(--blue-60); text-decoration: none; }
+    .crosssell-vendor:hover { text-decoration: underline; }
+    .crosssell-play { font-size: 12px; font-weight: 600; color: var(--gray-70); text-transform: uppercase; letter-spacing: 0.03em; }
+    .crosssell-why { font-size: 13px; color: var(--gray-70); }
+
+    .competitor-list { }
+    .competitor-item { display: grid; grid-template-columns: 150px 1fr; gap: 1rem; padding: 0.75rem 1.125rem; border-bottom: 1px solid var(--gray-20); }
+    .competitor-item:last-child { border-bottom: none; }
+    @media (max-width: 600px) { .competitor-item { grid-template-columns: 1fr; } }
+    .competitor-name { font-size: 13px; font-weight: 600; }
+    .competitor-space { font-size: 11px; color: var(--gray-50); margin-top: 0.125rem; }
+    .competitor-note { font-size: 13px; color: var(--gray-70); }
+
+    .icp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1px; background: var(--gray-20); }
+    .icp-card { background: var(--white); padding: 1rem; }
+    .icp-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-50); margin-bottom: 0.375rem; }
+    .icp-value { font-size: 13px; color: var(--gray-70); }
+
+    .sidebar-col { }
+    .sidebar-card { background: var(--white); border: 1px solid var(--gray-20); margin-bottom: 1rem; }
+    .sidebar-card .section-header { padding: 0.75rem 1rem; }
+    .sidebar-card .section-body { padding: 0.875rem 1rem; }
+
+    .arrow-advantage-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .arrow-advantage-list li { font-size: 13px; color: var(--gray-70); padding-left: 1rem; position: relative; }
+    .arrow-advantage-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; background: var(--blue-60); }
+
+    .key-facts { }
+    .key-fact { padding: 0.625rem 1rem; border-bottom: 1px solid var(--gray-20); }
+    .key-fact:last-child { border-bottom: none; }
+    .key-fact-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-50); }
+    .key-fact-value { font-size: 13px; color: var(--gray-70); margin-top: 0.125rem; }
+
+    .legend { display: flex; flex-direction: column; gap: 0.5rem; }
+    .legend-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 13px; color: var(--gray-70); }
+    .legend-swatch { width: 12px; height: 12px; flex-shrink: 0; margin-top: 3px; }
+
+    footer {
+      background: var(--gray-100); color: var(--gray-50); padding: 1rem 2rem; font-size: 12px;
+      display: flex; align-items: center; gap: 0.5rem; margin-top: 2rem;
+    }
+    footer a { color: var(--gray-50); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="../index.html">Arrow ECS UK</a>
+  <div class="divider"></div>
+  <nav class="breadcrumb">
+    <a href="../index.html">Vendor Line Card</a>
+    <span>›</span>
+    Black Duck
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="vendor-label">Vendor Profile</div>
+    <h1><strong>Black Duck</strong> <span style="font-weight:300;">by Synopsys</span></h1>
+    <p class="tagline">Open-source security, licence compliance, and static code analysis – helping software-building organisations find and fix vulnerabilities before they reach production.</p>
+    <div class="hero-tags">
+      <span class="hero-tag" style="background:var(--tag-sec)">Security</span>
+      <span class="hero-tag" style="background:var(--tag-devops)">DevOps</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="main-col">
+
+    <!-- Overview -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M17 22v-8h-4v2h2v6h-3v2h8v-2h-3zm-1-18a2 2 0 1 0 2 2 2 2 0 0 0-2-2z"/><path d="M16 2A14 14 0 1 0 30 16 14.016 14.016 0 0 0 16 2zm0 26A12 12 0 1 1 28 16 12.014 12.014 0 0 1 16 28z"/></svg>
+        </div>
+        <h2>Overview</h2>
+      </div>
+      <div class="section-body">
+        <p>Black Duck by Synopsys provides application security testing tools that identify security vulnerabilities, open-source licence risks, and code quality issues in software during development – before applications are deployed. The core Black Duck product is a Software Composition Analysis (SCA) tool: it scans a codebase or build artifact to identify every open-source component included, checks each component against known CVE databases, and flags any licence obligations that may conflict with the organisation's commercial or regulatory requirements. The Coverity product adds static application security testing (SAST), analysing source code for security defects and coding errors that could introduce vulnerabilities.</p>
+        <p>Black Duck is used by organisations that build software internally – whether that is a financial services firm developing trading systems, a defence contractor writing embedded firmware, or an engineering company writing control software for physical products. Any organisation that includes open-source libraries in its software (which is nearly all of them) has an obligation to understand what vulnerabilities those libraries carry. Black Duck automates that process at the scale a modern development pipeline requires.</p>
+        <p>Arrow ECS UK's Black Duck book is small in transaction count (20 lines in 2025) but high in deal value – individual deals reaching £450,000 for large enterprise licence transactions. The end-user profile confirmed in Arrow's sales data spans financial services, engineering and manufacturing, professional services, and technology companies. Arrow sells both on-premises (Team model) and cloud-hosted (SaaS) deployment models.</p>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 18H4V8h24z"/><path d="M8 12h4v2H8zm0 4h8v2H8zm0 4h4v2H8zm10-8h6v2h-6zm0 4h6v2h-6z"/></svg>
+        </div>
+        <h2>Arrow-Carried Portfolio</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50);">Products confirmed in Arrow ECS UK's 2025 sales data unless otherwise noted. Note: Arrow's system uses Synopsys (SPY) as the vendor entity for all Black Duck transactions.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-name">Black Duck SCA – Hosted</div>
+          <div class="product-card-desc">Cloud-hosted Software Composition Analysis. Scans application codebases for open-source components and known vulnerabilities (CVEs), licence obligations, and operational risk. Priced per team and available as a subscription. Confirmed in Arrow 2025 sales data as a frequently transacted product.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SCA</span>
+            <span class="mini-tag">Cloud-hosted</span>
+            <span class="mini-tag">Open-source risk</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Black Duck SCA – On-Premises</div>
+          <div class="product-card-desc">On-premises deployment of Black Duck SCA for organisations that cannot use cloud-hosted scanning. Licensed on a Team model (per developer count). Confirmed in Arrow 2025 sales data. Typically chosen by defence, government, or highly regulated customers.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SCA</span>
+            <span class="mini-tag">On-premises</span>
+            <span class="mini-tag">Team model</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Black Duck Binary Analysis</div>
+          <div class="product-card-desc">Scans compiled binaries and third-party components where source code is not available. Identifies open-source components and known vulnerabilities in software that has been compiled and delivered as a finished artifact. Confirmed in Arrow 2025 sales data.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Binary scanning</span>
+            <span class="mini-tag">Third-party software</span>
+            <span class="mini-tag">SBOM</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Coverity SAST</div>
+          <div class="product-card-desc">Static Application Security Testing that analyses source code for security vulnerabilities, coding errors, and defects. Available on-premises (team licence, per developer) and as a SaaS offering via Polaris. Confirmed in Arrow 2025 sales data in both forms.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SAST</span>
+            <span class="mini-tag">Source code</span>
+            <span class="mini-tag">Defect detection</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Polaris Platform (SaaS)</div>
+          <div class="product-card-desc">Cloud-native SaaS platform combining SCA and SAST in a single interface. Polaris SAST, Polaris SCA, and the combined SAST/SCA package are all confirmed in Arrow's 2025 sales data. Priced per team (developer count) with no Triage tier available for teams that do not need full issue management.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SaaS</span>
+            <span class="mini-tag">SCA + SAST</span>
+            <span class="mini-tag">Unified platform</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Implementation &amp; Expert Services</div>
+          <div class="product-card-desc">Professional services for Black Duck and Polaris deployment – Quick Start (QS) and Pro Implementation packages, plus Expert Services engagements (48-hour blocks). Services are consistently bundled with licence transactions in Arrow's 2025 data, indicating that customers typically need deployment support.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Implementation</span>
+            <span class="mini-tag">Quick Start</span>
+            <span class="mini-tag">Expert Services</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cross-sell -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M29.707 19.293l-3-3a1 1 0 0 0-1.414 1.414L26.586 19H18v-6.586l1.293 1.293a1 1 0 0 0 1.414-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 1 0 1.414 1.414L16 12.414V19H7.414l1.293-1.293a1 1 0 1 0-1.414-1.414l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414-1.414L7.414 21H16v6.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L19 27.586V21h8.586l-1.293 1.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z"/></svg>
+        </div>
+        <h2>Cross-sell &amp; Expansion Opportunities</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="crosssell-list">
+
+          <!-- EVIDENCE: Complementary – validated conceptually. IBM DevOps tools (UrbanCode) and IBM Cloud environments are common in enterprise customers; Black Duck integrates with CI/CD pipelines including those using IBM tooling. IBM UK appears as a Black Duck end user in Arrow's 2025 sales data. -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-expand"></div>
+            <a class="crosssell-vendor" href="ibm.html">IBM</a>
+            <div class="crosssell-play">DevSecOps – Black Duck in the IBM Software Pipeline</div>
+            <div class="crosssell-why">Customers using IBM DevOps tools (IBM UrbanCode Deploy, IBM Engineering Lifecycle Management) are building CI/CD pipelines where Black Duck can be integrated as a scanning stage. Black Duck supports API-based integration with Jenkins, GitHub Actions, and other pipeline tools commonly used alongside IBM DevOps platforms. IBM UK itself appears as an end user of Black Duck through Arrow's 2025 sales channel – confirming co-deployment at enterprise scale. Any IBM DevOps conversation in a software-building organisation should include a discussion of open-source security posture.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated conceptually. Black Duck scans code in the SDLC; F5 WAF protects the deployed application at runtime. Different lifecycle stages, common in the same environment. -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="f5.html">F5 Networks</a>
+            <div class="crosssell-play">Secure the Code, Protect the App at Runtime</div>
+            <div class="crosssell-why">Black Duck finds vulnerabilities in application code and dependencies during development. F5's Web Application Firewall protects the deployed application from exploitation at runtime. The two operate at different stages of the application security lifecycle and address different threat vectors – Black Duck reduces the attack surface before deployment; F5 mitigates the risk from what reaches production. Organisations with F5 WAF deployments that also have internal development teams are a natural Black Duck expansion conversation.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated conceptually. Entrust nShield HSMs protect code signing keys; Black Duck validates the code before it is signed. Common DevSecOps pipeline pattern for regulated software releases. -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="entrust.html">Entrust</a>
+            <div class="crosssell-play">Scan Before You Sign – SBOM + Code Signing</div>
+            <div class="crosssell-why">A complete software release chain for regulated organisations includes both scanning (confirming the code is clean) and signing (proving the release is authentic and untampered). Black Duck handles the scan; Entrust nShield HSMs provide the hardware-protected signing keys. In any organisation running a formal software release process – particularly in defence, financial services, or government supply chains – the combination addresses two mandatory security controls that are often bought separately without the connection being made.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated conceptually. Black Duck secures the software supply chain; OPSWAT secures the media ingress point for that software in OT/CNI environments. -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="opswat.html">OPSWAT</a>
+            <div class="crosssell-play">Supply Chain Security + OT Environment Protection</div>
+            <div class="crosssell-why">Black Duck ensures the software being deployed into an environment is free from known open-source vulnerabilities. OPSWAT controls what files and media can enter the operational environment where that software runs – particularly in air-gapped or OT environments. The two sit at different points in the same security chain: Black Duck verifies software provenance; OPSWAT controls physical data ingress. Particularly relevant for industrial and defence customers deploying software updates into isolated environments.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--gray-70)"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 2c2.495 0 4.813.768 6.734 2.079L5.08 22.734A11.943 11.943 0 0 1 4 16C4 9.373 9.373 4 16 4zm0 24c-2.495 0-4.813-.768-6.734-2.079l17.655-17.655A11.943 11.943 0 0 1 28 16c0 6.627-5.373 12-12 12z"/></svg>
+        </div>
+        <h2>Competitive Landscape</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50); margin-bottom:1rem;">The application security testing market is active. The primary alternatives to Black Duck in SCA and SAST are well established.</p>
+      </div>
+      <div class="competitor-list">
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">SNYK</div>
+            <div class="competitor-space">SCA / Developer Security</div>
+          </div>
+          <div class="competitor-note">SNYK is the most commonly encountered Black Duck alternative in SCA. SNYK leads on developer experience – it is designed to be used directly by developers in the IDE and CLI, whereas Black Duck is often deployed as a pipeline gate by security teams. Black Duck has advantages in licence compliance depth and binary scanning capability. Both are also Arrow vendors – position as complementary where possible; understand which motion the customer is already invested in. Note: SNYK is also listed in the IBM cross-sell context.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Checkmarx</div>
+            <div class="competitor-space">SAST / SCA</div>
+          </div>
+          <div class="competitor-note">Checkmarx competes with Coverity in SAST and has added SCA capability. Checkmarx One is its unified platform. Often encountered in mid-market accounts where a simpler unified toolset is preferred over Black Duck's more configurable approach. Coverity is generally considered deeper for complex enterprise codebases and C/C++ heavy environments (where Coverity has the longest track record).</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Veracode</div>
+            <div class="competitor-space">SAST / SCA / DAST</div>
+          </div>
+          <div class="competitor-note">Veracode is a cloud-native application security testing platform covering SAST, SCA, and DAST. Well-established in financial services and regulated industries. Competes with both Coverity (SAST) and Black Duck (SCA). Veracode's strength is its all-in-one SaaS model; Black Duck's is depth of SCA capability and on-premises deployment for air-gapped environments.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">GitHub Advanced Security</div>
+            <div class="competitor-space">SCA / SAST (native tooling)</div>
+          </div>
+          <div class="competitor-note">GitHub Advanced Security includes CodeQL (SAST) and Dependabot (SCA) as native GitHub features. Available to organisations already on GitHub Enterprise. Often used as a baseline or supplementary tool; lacks the depth of commercial SCA for complex dependency graphs, licence compliance, or binary analysis. Black Duck typically wins when compliance and audit requirements demand dedicated tooling rather than CI/CD-native scanning.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ICP -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm10 28H6a2 2 0 0 1-2-2v-1a9 9 0 0 1 9-9h6a9 9 0 0 1 9 9v1a2 2 0 0 1-2 2zm-20-3h20v-1a7 7 0 0 0-7-7h-6a7 7 0 0 0-7 7z"/></svg>
+        </div>
+        <h2>Ideal Customer Profile</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="icp-grid">
+          <div class="icp-card">
+            <div class="icp-label">Organisation Size</div>
+            <div class="icp-value">Mid-market to large enterprise. Black Duck's Team model pricing scales with developer count – it is cost-effective for organisations with 20+ developers and becomes increasingly attractive at larger scale. Arrow's book confirms enterprise-level deal sizes.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Verticals</div>
+            <div class="icp-value">Any organisation that builds software internally. Financial services, defence and aerospace, engineering and manufacturing, professional services, and technology companies. Arrow's 2025 sales data confirms end users in financial services, precision engineering, and technology sectors.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Trigger Events</div>
+            <div class="icp-value">SBOM requirement (NIS2, US EO 14028, UK NCSC guidance); open-source licence audit finding; supply chain security programme; DevSecOps maturity initiative; M&amp;A due diligence on acquired software; CVE incident in open-source dependency.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Key Personas</div>
+            <div class="icp-value">Application Security Lead, DevOps / DevSecOps Manager, Head of Software Engineering, CISO (for policy mandate). Black Duck decisions often involve both the security team (who mandate it) and the engineering team (who use it).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-col">
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Arrow Advantage</h2>
+      </div>
+      <div class="section-body">
+        <ul class="arrow-advantage-list">
+          <li>Arrow ECS UK is an authorised Synopsys/Black Duck distributor – both on-premises and SaaS (Polaris) deployment models available through Arrow</li>
+          <li>Arrow transacts Black Duck SCA, Coverity SAST, Polaris, Binary Analysis, and implementation services</li>
+          <li>Professional services (Quick Start, Pro Implementation, Expert Services) are bundled with Arrow Black Duck deals – reducing time to value for customers</li>
+          <li>Arrow's IBM and DevOps relationships open natural routes into organisations with existing DevOps tooling conversations</li>
+          <li>Arrow can support both hosted (SaaS) and air-gapped on-premises deployments – relevant for defence and regulated customers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Key Facts</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact">
+            <div class="key-fact-label">Black Duck origin</div>
+            <div class="key-fact-value">Founded 2002; acquired by Synopsys 2017</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Parent company</div>
+            <div class="key-fact-value">Synopsys, Inc. – Sunnyvale, California, USA</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Arrow tile name</div>
+            <div class="key-fact-value">BlackDuck (one word – matches the Arrow line card exactly)</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Arrow Categories</div>
+            <div class="key-fact-value">Security · DevOps</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Deployment models</div>
+            <div class="key-fact-value">Cloud-hosted (SaaS), on-premises, hybrid</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Cross-sell Legend</h2>
+      </div>
+      <div class="section-body">
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--green-50)"></div>
+            <span><strong>Complementary</strong> – different problem, typically deployed together</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--blue-60)"></div>
+            <span><strong>Integration partner</strong> – confirmed technical integration exists</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--purple-60)"></div>
+            <span><strong>Expansion</strong> – natural upsell or expansion in the same deal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Related Vendors</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('ibm.html','_blank')">
+            <div class="key-fact-label">DevOps &amp; Pipeline Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">IBM &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('f5.html','_blank')">
+            <div class="key-fact-label">Runtime Application Protection</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">F5 Networks &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('entrust.html','_blank')">
+            <div class="key-fact-label">Code Signing &amp; PKI</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Entrust &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('opswat.html','_blank')">
+            <div class="key-fact-label">OT &amp; Media Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">OPSWAT &rsaquo;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /page-body -->
+
+<footer>
+  <span>© 2026 Arrow Electronics, Inc. All rights reserved.</span>
+  <span style="color:var(--gray-50); margin: 0 1rem;">·</span>
+  <span style="color:var(--gray-50)">Last updated: 2026-09</span>
+  <a href="https://www.arrow.com/globalecs/uk/products/" style="margin-left:auto;">arrow.com/globalecs/uk/products</a>
+</footer>
+
+</body>
+</html>

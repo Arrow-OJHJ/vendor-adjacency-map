@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F5 Networks – Arrow ECS UK Vendor Profile</title>
+  <style>
+    :root {
+      --blue-60: #0f62fe;
+      --blue-70: #0043ce;
+      --blue-10: #edf5ff;
+      --blue-20: #d0e2ff;
+      --gray-10: #f4f4f4;
+      --gray-20: #e0e0e0;
+      --gray-30: #c6c6c6;
+      --gray-50: #8d8d8d;
+      --gray-70: #525252;
+      --gray-90: #262626;
+      --gray-100: #161616;
+      --white: #ffffff;
+      --green-50: #198038;
+      --green-10: #defbe6;
+      --red-60: #da1e28;
+      --red-10: #fff1f1;
+      --yellow-20: #fdd13a;
+      --yellow-10: #fdf6dd;
+      --purple-60: #8a3ffc;
+      --purple-10: #f6f2ff;
+      --teal-50: #009d9a;
+      --teal-10: #d9fbfb;
+
+      --tag-dc:       #0f62fe;
+      --tag-bi:       #8a3ffc;
+      --tag-cloud:    #009d9a;
+      --tag-mob:      #198038;
+      --tag-sec:      #da1e28;
+      --tag-net:      #ee5396;
+      --tag-iot:      #ff832b;
+      --tag-arrow:    #0043ce;
+      --tag-devops:   #6929c4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background: var(--gray-10);
+      color: var(--gray-100);
+    }
+
+    header {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--gray-90);
+    }
+    .logo { font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; margin-right: 1.5rem; }
+    .divider { width: 1px; height: 24px; background: var(--gray-70); margin-right: 1.5rem; }
+    .breadcrumb { font-size: 14px; color: var(--gray-50); }
+    .breadcrumb a { color: var(--gray-30); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; color: var(--gray-70); }
+
+    .hero {
+      background: var(--gray-100);
+      color: var(--white);
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--tag-net);
+    }
+    .hero-inner { max-width: 900px; }
+    .vendor-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-50); margin-bottom: 0.5rem; }
+    .hero h1 { font-size: 2.25rem; font-weight: 300; line-height: 1.2; margin-bottom: 0.75rem; }
+    .hero h1 strong { font-weight: 600; }
+    .tagline { font-size: 15px; color: var(--gray-30); max-width: 680px; margin-bottom: 1.25rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .hero-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; color: #fff;
+    }
+
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) { .page-body { grid-template-columns: 1fr; } }
+
+    .section { background: var(--white); border: 1px solid var(--gray-20); margin-bottom: 1rem; }
+    .section-header { padding: 0.875rem 1.125rem; border-bottom: 1px solid var(--gray-20); display: flex; align-items: center; gap: 0.5rem; }
+    .section-header h2 { font-size: 14px; font-weight: 600; }
+    .section-icon { display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex-shrink: 0; }
+    .section-body { padding: 1rem 1.125rem; }
+    .section-body p { margin-bottom: 0.875rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--gray-20); }
+    .product-card { background: var(--white); padding: 1rem; }
+    .product-card-name { font-size: 13px; font-weight: 600; margin-bottom: 0.375rem; }
+    .product-card-desc { font-size: 12px; color: var(--gray-70); margin-bottom: 0.5rem; }
+    .product-card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .mini-tag { font-size: 10px; font-weight: 600; background: var(--gray-10); color: var(--gray-70); padding: 0.15rem 0.45rem; border: 1px solid var(--gray-20); }
+
+    .crosssell-list { }
+    .crosssell-item { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto auto; column-gap: 0.875rem; row-gap: 0.125rem; padding: 0.875rem 1.125rem; border-bottom: 1px solid var(--gray-20); }
+    .crosssell-item:last-child { border-bottom: none; }
+    .crosssell-badge { grid-row: 1 / 4; width: 4px; border-radius: 0; align-self: stretch; }
+    .badge-complement { background: var(--green-50); }
+    .badge-partner    { background: var(--blue-60); }
+    .badge-expand     { background: var(--purple-60); }
+    .crosssell-vendor { font-size: 13px; font-weight: 600; color: var(--blue-60); text-decoration: none; }
+    .crosssell-vendor:hover { text-decoration: underline; }
+    .crosssell-play { font-size: 12px; font-weight: 600; color: var(--gray-70); text-transform: uppercase; letter-spacing: 0.03em; }
+    .crosssell-why { font-size: 13px; color: var(--gray-70); }
+
+    .competitor-list { }
+    .competitor-item { display: grid; grid-template-columns: 150px 1fr; gap: 1rem; padding: 0.75rem 1.125rem; border-bottom: 1px solid var(--gray-20); }
+    .competitor-item:last-child { border-bottom: none; }
+    @media (max-width: 600px) { .competitor-item { grid-template-columns: 1fr; } }
+    .competitor-name { font-size: 13px; font-weight: 600; }
+    .competitor-space { font-size: 11px; color: var(--gray-50); margin-top: 0.125rem; }
+    .competitor-note { font-size: 13px; color: var(--gray-70); }
+
+    .icp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1px; background: var(--gray-20); }
+    .icp-card { background: var(--white); padding: 1rem; }
+    .icp-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-50); margin-bottom: 0.375rem; }
+    .icp-value { font-size: 13px; color: var(--gray-70); }
+
+    .sidebar-col { }
+    .sidebar-card { background: var(--white); border: 1px solid var(--gray-20); margin-bottom: 1rem; }
+    .sidebar-card .section-header { padding: 0.75rem 1rem; }
+    .sidebar-card .section-body { padding: 0.875rem 1rem; }
+
+    .arrow-advantage-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .arrow-advantage-list li { font-size: 13px; color: var(--gray-70); padding-left: 1rem; position: relative; }
+    .arrow-advantage-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; background: var(--blue-60); }
+
+    .key-facts { }
+    .key-fact { padding: 0.625rem 1rem; border-bottom: 1px solid var(--gray-20); }
+    .key-fact:last-child { border-bottom: none; }
+    .key-fact-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-50); }
+    .key-fact-value { font-size: 13px; color: var(--gray-70); margin-top: 0.125rem; }
+
+    .legend { display: flex; flex-direction: column; gap: 0.5rem; }
+    .legend-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 13px; color: var(--gray-70); }
+    .legend-swatch { width: 12px; height: 12px; flex-shrink: 0; margin-top: 3px; }
+
+    footer {
+      background: var(--gray-100); color: var(--gray-50); padding: 1rem 2rem; font-size: 12px;
+      display: flex; align-items: center; gap: 0.5rem; margin-top: 2rem;
+    }
+    footer a { color: var(--gray-50); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="../index.html">Arrow ECS UK</a>
+  <div class="divider"></div>
+  <nav class="breadcrumb">
+    <a href="../index.html">Vendor Line Card</a>
+    <span>›</span>
+    F5 Networks
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="vendor-label">Vendor Profile</div>
+    <h1><strong>F5 Networks</strong></h1>
+    <p class="tagline">Application delivery, load balancing, web application security, and API protection – deployed on hardware appliances, software, and as cloud-delivered SaaS.</p>
+    <div class="hero-tags">
+      <span class="hero-tag" style="background:var(--tag-net)">Networking</span>
+      <span class="hero-tag" style="background:var(--tag-sec)">Security</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="main-col">
+
+    <!-- Overview -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M17 22v-8h-4v2h2v6h-3v2h8v-2h-3zm-1-18a2 2 0 1 0 2 2 2 2 0 0 0-2-2z"/><path d="M16 2A14 14 0 1 0 30 16 14.016 14.016 0 0 0 16 2zm0 26A12 12 0 1 1 28 16 12.014 12.014 0 0 1 16 28z"/></svg>
+        </div>
+        <h2>Overview</h2>
+      </div>
+      <div class="section-body">
+        <p>F5 Networks is the market leader in application delivery controllers (ADCs) – the technology that sits in front of applications and services to distribute traffic, manage TLS termination, enforce access policies, and protect against web-based attacks. Its BIG-IP platform is deployed in the majority of large enterprise and public sector environments as the primary layer for application availability, performance, and security. F5 also develops NGINX, one of the world's most widely deployed web servers and proxy technologies, and operates a growing cloud-delivered SaaS portfolio called F5 Distributed Cloud Services.</p>
+        <p>In a customer environment, F5 typically sits at the edge of the data centre or cloud perimeter, in front of web applications, APIs, and internal services. It handles SSL/TLS offload, intelligent load balancing, DDoS mitigation, and web application firewall (WAF) policy enforcement. The Access Policy Manager (APM) module adds a network access and identity layer, enabling Zero Trust network access (ZTNA) and VPN replacement scenarios. F5's SSL Orchestrator product chains together third-party inspection tools – security appliances can be inserted into the decrypted traffic path without individual integration work.</p>
+        <p>Arrow ECS UK's F5 relationship is one of the highest-volume vendor relationships in the phase 1 group, with over 2,400 transaction lines in 2025. The book is dominated by BIG-IP hardware appliances (the rSeries platform), software licences, support renewals (F5 Global Support), and Enterprise Licensing Agreements – confirming F5 as a large, renewal-heavy account with a mature installed base.</p>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 18H4V8h24z"/><path d="M8 12h4v2H8zm0 4h8v2H8zm0 4h4v2H8zm10-8h6v2h-6zm0 4h6v2h-6z"/></svg>
+        </div>
+        <h2>Arrow-Carried Portfolio</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50);">All products below are confirmed in Arrow ECS UK's 2025 sales data unless otherwise noted.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-name">BIG-IP rSeries Appliances</div>
+          <div class="product-card-desc">F5's current-generation hardware ADC platform. The r4600, r5800, r5900, r5920, r10600, r10900, and r12600 models all appear in Arrow's 2025 sales data. Deployed on-premises in front of applications for traffic management, SSL offload, WAF, and access control.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Hardware</span>
+            <span class="mini-tag">ADC</span>
+            <span class="mini-tag">On-premises</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">BIG-IP Local Traffic Manager (LTM)</div>
+          <div class="product-card-desc">The core load balancing and traffic management module. Distributes application traffic across server pools, performs health monitoring, and handles SSL/TLS termination. Present across virtually every BIG-IP deployment.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Load balancing</span>
+            <span class="mini-tag">TLS termination</span>
+            <span class="mini-tag">High availability</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">BIG-IP Advanced WAF</div>
+          <div class="product-card-desc">Web application firewall that protects against OWASP Top 10 threats, automated attacks, and API abuse. The Advanced WAF module adds bot defence and behavioural analytics beyond the standard WAF capability. Confirmed in Arrow 2025 sales data.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">WAF</span>
+            <span class="mini-tag">API security</span>
+            <span class="mini-tag">Bot defence</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">BIG-IP Access Policy Manager (APM)</div>
+          <div class="product-card-desc">Identity and access control module that enables Zero Trust network access, VPN, and SSO. APM integrates with identity providers and can enforce device compliance checks (including via OPSWAT MetaAccess) before granting access to protected resources.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">ZTNA</span>
+            <span class="mini-tag">VPN replacement</span>
+            <span class="mini-tag">SSO</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">BIG-IP SSL Orchestrator</div>
+          <div class="product-card-desc">Decrypts SSL/TLS traffic and routes it through a chain of third-party inspection tools (IDS, sandbox, DLP, etc.) before re-encrypting and forwarding. Solves the problem of encrypted traffic bypassing security controls. Supports integration with HSMs for key management.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SSL inspection</span>
+            <span class="mini-tag">Security chaining</span>
+            <span class="mini-tag">HSM integration</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">BIG-IP Virtual Edition</div>
+          <div class="product-card-desc">Software-based BIG-IP deployed as a virtual machine in VMware, KVM, or public cloud environments. Provides the same LTM, WAF, and APM functionality as hardware appliances. Subscription licensing confirmed in Arrow 2025 data.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Virtual</span>
+            <span class="mini-tag">Cloud-ready</span>
+            <span class="mini-tag">Subscription</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">VELOS Chassis</div>
+          <div class="product-card-desc">F5's high-capacity chassis platform for large-scale data centres. The VELOS CX410 chassis with BX110 blades is confirmed in Arrow's 2025 sales data – suited to telco, financial services, and large enterprise environments requiring carrier-grade throughput.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Chassis</span>
+            <span class="mini-tag">High capacity</span>
+            <span class="mini-tag">Data centre</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">F5 Distributed Cloud Services</div>
+          <div class="product-card-desc">SaaS-delivered application security and delivery platform. Includes cloud WAF, API security, DDoS protection, and managed edge services. The Managed Service Standard tier is confirmed in Arrow 2025 data, indicating active SaaS adoption alongside traditional hardware.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">SaaS</span>
+            <span class="mini-tag">WAF</span>
+            <span class="mini-tag">DDoS</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">F5 Global Support</div>
+          <div class="product-card-desc">Support and professional services programme covering the full BIG-IP and F5 product range. Arrow transacts Level 1-3 Premium (24x7), Level 1-3 Standard (10x5), Four-Hour Hardware Replacement (RMA), and Statement of Work consulting services. Support is the second-largest revenue category in Arrow's F5 book.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">24x7 support</span>
+            <span class="mini-tag">RMA</span>
+            <span class="mini-tag">Professional services</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-name">Enterprise Licensing Agreement (ELA)</div>
+          <div class="product-card-desc">Annual ELA billing covering F5's full software portfolio for large enterprise and government customers. ELA transactions are among the highest-value single items in Arrow's F5 book and typically include multi-year commitments.</div>
+          <div class="product-card-tags">
+            <span class="mini-tag">Enterprise licence</span>
+            <span class="mini-tag">Annual billing</span>
+            <span class="mini-tag">Multi-year</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cross-sell -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M29.707 19.293l-3-3a1 1 0 0 0-1.414 1.414L26.586 19H18v-6.586l1.293 1.293a1 1 0 0 0 1.414-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 1 0 1.414 1.414L16 12.414V19H7.414l1.293-1.293a1 1 0 1 0-1.414-1.414l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414-1.414L7.414 21H16v6.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L19 27.586V21h8.586l-1.293 1.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z"/></svg>
+        </div>
+        <h2>Cross-sell &amp; Expansion Opportunities</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="crosssell-list">
+
+          <!-- EVIDENCE: Integration partner – OPSWAT MetaAccess integrates with F5 APM. Documented in OPSWAT technology partner catalogue. Source: opswat.com/partners/technology -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-partner"></div>
+            <a class="crosssell-vendor" href="opswat.html">OPSWAT</a>
+            <div class="crosssell-play">Zero Trust Access – Endpoint Compliance via MetaAccess</div>
+            <div class="crosssell-why">OPSWAT MetaAccess integrates directly with F5 BIG-IP APM. When a user attempts to access an APM-protected resource, MetaAccess can be invoked to verify device compliance – OS patch level, AV status, disk encryption – before access is granted. This brings device health into the F5 access policy without requiring a separate endpoint agent or NAC infrastructure. Particularly relevant in healthcare, government, and regulated finance environments deploying Zero Trust.</div>
+          </div>
+
+          <!-- EVIDENCE: Integration partner – Entrust nShield HSMs integrate with F5 BIG-IP for SSL key management. Documented by both F5 (network HSM integration docs) and Entrust (F5 technology alliance listing). -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-partner"></div>
+            <a class="crosssell-vendor" href="entrust.html">Entrust</a>
+            <div class="crosssell-play">HSM Key Protection for F5 SSL Orchestrator</div>
+            <div class="crosssell-why">F5 BIG-IP and SSL Orchestrator support integration with network-attached HSMs for private key storage and SSL/TLS operations. Entrust nShield HSMs can serve as the hardware root of trust for F5's certificate keys – ensuring private keys never exist in software and meeting FIPS 140-2 Level 3 requirements. This is a natural expansion in any F5 SSL Orchestrator or high-assurance WAF deployment where key protection is a compliance requirement.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated conceptually. Black Duck secures the SDLC; F5 protects the deployed application. Different stages, complementary coverage. -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="blackduck.html">Black Duck</a>
+            <div class="crosssell-play">SDLC Security Upstream of Runtime Protection</div>
+            <div class="crosssell-why">F5 protects applications at runtime – blocking web attacks, malformed requests, and API abuse at the network edge. Black Duck identifies vulnerabilities in the application's code and open-source dependencies before it is deployed. The two address different parts of the application security lifecycle: Black Duck prevents vulnerable code reaching production; F5 mitigates exploitation of whatever reaches the edge. In any F5 WAF conversation with organisations that have an internal development function, Black Duck is a natural adjacent discussion.</div>
+          </div>
+
+          <!-- EVIDENCE: Complementary – validated; IBM QRadar can ingest F5 ASM/WAF event logs via syslog; documented in F5 DevCentral and IBM QRadar compatibility lists -->
+          <div class="crosssell-item">
+            <div class="crosssell-badge badge-complement"></div>
+            <a class="crosssell-vendor" href="ibm.html">IBM Security</a>
+            <div class="crosssell-play">F5 WAF &amp; APM Events into IBM QRadar</div>
+            <div class="crosssell-why">F5 BIG-IP ASM (WAF) and APM generate detailed security event logs. IBM QRadar can ingest F5 syslog feeds to correlate web application attacks with identity and network events in the SOC. This is particularly useful for customers running both F5 for application delivery and IBM QRadar for security operations – the F5 telemetry adds an application-layer visibility dimension that network-only SIEM inputs cannot provide.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Competitors -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--gray-70)"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 2c2.495 0 4.813.768 6.734 2.079L5.08 22.734A11.943 11.943 0 0 1 4 16C4 9.373 9.373 4 16 4zm0 24c-2.495 0-4.813-.768-6.734-2.079l17.655-17.655A11.943 11.943 0 0 1 28 16c0 6.627-5.373 12-12 12z"/></svg>
+        </div>
+        <h2>Competitive Landscape</h2>
+      </div>
+      <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
+        <p style="font-size:13px; color:var(--gray-50); margin-bottom:1rem;">Vendors you are likely to encounter on the same shortlist. F5 is the established incumbent in most enterprise ADC accounts.</p>
+      </div>
+      <div class="competitor-list">
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Citrix (NetScaler)</div>
+            <div class="competitor-space">ADC / Load Balancing</div>
+          </div>
+          <div class="competitor-note">Citrix NetScaler (now NetScaler by Cloud Software Group) is F5's primary ADC competitor. NetScaler has historically been stronger in Citrix-centric environments (Citrix Virtual Apps and Desktops). F5 leads on feature depth for complex application delivery policies, multi-cloud deployment flexibility, and security integration breadth. Many large enterprises run both vendors in different parts of the estate.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Kemp (Progress)</div>
+            <div class="competitor-space">ADC / Load Balancing</div>
+          </div>
+          <div class="competitor-note">Kemp (acquired by Progress) competes with F5 in the mid-market load balancing segment. Kemp's pricing is significantly lower and its platform is simpler. F5 wins on feature depth, security integration, and enterprise-scale reliability. Kemp is typically encountered in smaller organisations or in non-critical application tiers within larger ones.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Cloudflare</div>
+            <div class="competitor-space">Cloud WAF / DDoS / CDN</div>
+          </div>
+          <div class="competitor-note">Cloudflare competes with F5 Distributed Cloud Services in cloud-delivered WAF, DDoS, and API security. Cloudflare's reverse-proxy model is simpler to deploy for internet-facing applications. F5 wins when organisations need on-premises control, deep customisation, or integration with existing BIG-IP infrastructure. Many organisations run F5 on-premises and Cloudflare at the edge simultaneously.</div>
+        </div>
+
+        <div class="competitor-item">
+          <div>
+            <div class="competitor-name">Palo Alto Networks (Prisma)</div>
+            <div class="competitor-space">ZTNA / Application Security</div>
+          </div>
+          <div class="competitor-note">Palo Alto Prisma Access competes with F5 APM in Zero Trust network access and VPN replacement. Palo Alto leads on cloud-native SASE architecture; F5 leads in organisations with heavy on-premises investment in BIG-IP infrastructure. The two are increasingly positioned in the same Zero Trust and hybrid access conversations.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ICP -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm10 28H6a2 2 0 0 1-2-2v-1a9 9 0 0 1 9-9h6a9 9 0 0 1 9 9v1a2 2 0 0 1-2 2zm-20-3h20v-1a7 7 0 0 0-7-7h-6a7 7 0 0 0-7 7z"/></svg>
+        </div>
+        <h2>Ideal Customer Profile</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="icp-grid">
+          <div class="icp-card">
+            <div class="icp-label">Organisation Size</div>
+            <div class="icp-value">Mid-market to large enterprise and government. BIG-IP hardware suits organisations running complex multi-application environments. Virtual Edition and Distributed Cloud scale down to smaller deployments.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Verticals</div>
+            <div class="icp-value">Financial services, government, healthcare, telco, and large retail. Broadly sector-agnostic – any organisation with web-facing applications or internal services requiring high availability, secure access, and WAF protection.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Trigger Events</div>
+            <div class="icp-value">BIG-IP hardware refresh (rSeries migration from VIPRION / older chassis); SSL certificate management project; WAF deployment for PCI DSS or ISO 27001; Zero Trust network access initiative; DDoS incident; API security programme.</div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-label">Key Personas</div>
+            <div class="icp-value">Head of Network / Infrastructure, Security Architect, CISO (for WAF and ZTNA conversations), Application Owner (for ADC performance), and IT Procurement for ELA and renewal discussions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-col">
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Arrow Advantage</h2>
+      </div>
+      <div class="section-body">
+        <ul class="arrow-advantage-list">
+          <li>Arrow ECS UK is an authorised F5 distributor with one of the highest F5 transaction volumes in the Arrow phase 1 vendor group</li>
+          <li>Arrow transacts F5 hardware appliances, virtual licences, SaaS subscriptions, ELAs, support contracts, and professional services</li>
+          <li>F5 Global Support (Level 1-3 Premium and Standard, RMA services) is available through Arrow – full support lifecycle covered</li>
+          <li>Arrow's pre-sales team can assist with BIG-IP rSeries sizing and migration from legacy VIPRION or older hardware platforms</li>
+          <li>Arrow's existing relationships in financial services and government align with F5's strongest UK verticals</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Key Facts</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact">
+            <div class="key-fact-label">Founded</div>
+            <div class="key-fact-value">1996</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Headquarters</div>
+            <div class="key-fact-value">Seattle, Washington, USA</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Revenue (FY2024)</div>
+            <div class="key-fact-value">~$2.9 billion</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Arrow Categories</div>
+            <div class="key-fact-value">Networking · Security</div>
+          </div>
+          <div class="key-fact">
+            <div class="key-fact-label">Note</div>
+            <div class="key-fact-value">F5 Networks Global Support links to this page – see Global Support section in portfolio above</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Cross-sell Legend</h2>
+      </div>
+      <div class="section-body">
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--green-50)"></div>
+            <span><strong>Complementary</strong> – different problem, typically deployed together</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--blue-60)"></div>
+            <span><strong>Integration partner</strong> – confirmed technical integration exists</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--purple-60)"></div>
+            <span><strong>Expansion</strong> – natural upsell or expansion in the same deal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-header">
+        <h2>Related Vendors</h2>
+      </div>
+      <div class="section-body" style="padding:0">
+        <div class="key-facts">
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('opswat.html','_blank')">
+            <div class="key-fact-label">Endpoint Compliance / NAC</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">OPSWAT &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('entrust.html','_blank')">
+            <div class="key-fact-label">HSM &amp; Key Management</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Entrust &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('blackduck.html','_blank')">
+            <div class="key-fact-label">Application Code Security</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">Black Duck &rsaquo;</div>
+          </div>
+          <div class="key-fact" style="cursor:pointer;" onclick="window.open('ibm.html','_blank')">
+            <div class="key-fact-label">SIEM &amp; Infrastructure</div>
+            <div class="key-fact-value" style="color:var(--blue-60)">IBM &rsaquo;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /page-body -->
+
+<footer>
+  <span>© 2026 Arrow Electronics, Inc. All rights reserved.</span>
+  <span style="color:var(--gray-50); margin: 0 1rem;">·</span>
+  <span style="color:var(--gray-50)">Last updated: 2026-09</span>
+  <a href="https://www.arrow.com/globalecs/uk/products/" style="margin-left:auto;">arrow.com/globalecs/uk/products</a>
+</footer>
+
+</body>
+</html>
