@@ -17,11 +17,8 @@ vendor-adjacency-map/
 │   ├── f5.html                 ← F5 Networks vendor profile page (also used by F5 Networks Global Support tile)
 │   ├── entrust.html            ← Entrust nShield vendor profile page
 │   └── blackduck.html          ← Black Duck by Synopsys vendor profile page
-├── vendor-sales-out/           ← 2025 sales-out reports (internal – not published)
-├── .bob/                       ← Planning documents and working notes (internal)
 ├── arrow-enterprise-computing-solutions-uk-line-card-2026.pdf
-├── README.md
-└── project-history.md
+└── README.md
 ```
 
 ---
