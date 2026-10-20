@@ -28,16 +28,16 @@ vendor-adjacency-map/
 
 ## Pages
 
-### `index.html` — Vendor Line Card
+### `index.html` - Vendor Line Card
 
 The main page. Shows all 84 vendors from the Arrow ECS UK Line Card 2026 as searchable, filterable tiles.
 
 **Features:**
-- **Search** — filter by vendor name in real time
-- **Tag filters** — filter by any combination of the 9 Arrow categories:
+- **Search** - filter by vendor name in real time
+- **Tag filters** - filter by any combination of the 9 Arrow categories:
   - Data Centre, Business Intelligence, Cloud, Mobility, Security, Networking, IoT & Edge, ArrowSphere, DevOps
-- **Sort** — Popularity (default, IBM first), A–Z, or Z–A
-- **Click-through** — vendors with a profile page show "View profile ›" and link through; others show "Profile coming soon"
+- **Sort** - Popularity (default, IBM first), A-Z, or Z-A
+- **Click-through** - vendors with a profile page show "View profile >" and link through; others show "Profile coming soon"
 
 **Data source:** Arrow ECS UK Line Card 2026 PDF (as of 1 July 2026)
 
@@ -57,12 +57,12 @@ Individual pages for each vendor, built to a consistent template. Currently live
 | Black Duck | `vendors/blackduck.html` | ✅ Live |
 
 **Each page includes:**
-1. **Overview** — plain-English description of what the vendor does and why it matters to Arrow sales teams
-2. **Arrow-Carried Portfolio** — the specific product lines available through Arrow ECS UK, with descriptions
-3. **Cross-sell & Expansion Opportunities** — other Arrow vendors that pair well, with a "why" explanation and a colour-coded relationship type (Complementary / Integration partner / Expansion)
-4. **Competitive Landscape** — vendors a rep will encounter on the same shortlist, with positioning notes
-5. **Ideal Customer Profile** — size, verticals, trigger events, and key personas
-6. **Sidebar** — Arrow Advantage (accreditations, programmes), Key Facts, and Related Vendors links
+1. **Overview** - plain-English description of what the vendor does and why it matters to Arrow sales teams
+2. **Arrow-Carried Portfolio** - the specific product lines available through Arrow ECS UK, with descriptions
+3. **Cross-sell & Expansion Opportunities** - other Arrow vendors that pair well, with a "why" explanation and a colour-coded relationship type (Complementary / Integration partner / Expansion)
+4. **Competitive Landscape** - vendors a rep will encounter on the same shortlist, with positioning notes
+5. **Ideal Customer Profile** - size, verticals, trigger events, and key personas
+6. **Sidebar** - Arrow Advantage (accreditations, programmes), Key Facts, and Related Vendors links
 
 ---
 
@@ -72,7 +72,7 @@ Built with [IBM Carbon Design System](https://carbondesignsystem.com/) principle
 - IBM Gray scale colour tokens (`#161616` → `#f4f4f4`)
 - IBM Blue 60 (`#0f62fe`) as primary accent
 - IBM Plex Sans font stack
-- Square corners (Carbon convention — no border-radius on interactive elements)
+- Square corners (Carbon convention - no border-radius on interactive elements)
 - 1px gap grid layout for the vendor tile grid
 - Sticky header and controls bar
 
@@ -94,7 +94,7 @@ Tag colours follow Carbon semantic colours:
 ## Adding a new vendor page
 
 1. Copy an existing vendor page (e.g. `vendors/ibm.html`) as a starting point
-2. Update all content sections — overview, portfolio, cross-sells, competitors, ICP
+2. Update all content sections - overview, portfolio, cross-sells, competitors, ICP
 3. Add the file to the `VENDOR_PAGES` map in `index.html`:
 
 ```js
@@ -113,24 +113,7 @@ The vendor name must match **exactly** the `name` field in the `VENDORS` array i
 
 ---
 
-## Hosting on GitHub Pages
-
-1. Push the `vendor-adjacency-map/` folder to a GitHub repository
-2. Go to **Settings → Pages**
-3. Set source to the branch and folder containing `index.html`
-4. GitHub will serve it at `https://<username>.github.io/<repo>/`
-
-All paths are relative so the site works from any subdirectory.
-
----
-
 ## Source data
 
 - Arrow ECS UK Line Card 2026 (PDF): `arrow-enterprise-computing-solutions-uk-line-card-2026.pdf`
 - Arrow vendor portal: [arrow.com/globalecs/uk/products](https://www.arrow.com/globalecs/uk/products/)
-
----
-
-## Project context
-
-See `project-history.md` for the full reasoning, design decisions, and development history – useful context when picking this up in a new session.
