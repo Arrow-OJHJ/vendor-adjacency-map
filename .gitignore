@@ -14,8 +14,6 @@ sales-out-vendor-codes.txt
 # Project history log
 project-history.md
 
-# Arrow line card PDF
-*.pdf
 
 # Bob AI assistant workspace
 .bob/

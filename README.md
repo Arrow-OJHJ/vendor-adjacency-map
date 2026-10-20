@@ -1,8 +1,8 @@
-# Arrow ECS UK — Vendor Adjacency & Line Card Tool
+# Arrow ECS UK - Vendor Adjacency & Line Card Tool
 
 A static HTML tool for Arrow ECS UK sales teams to explore the vendor portfolio, understand cross-sell opportunities, and find adjacent products across the line card.
 
-Designed to be hosted on GitHub Pages or any static file host — no server, no build step, no dependencies.
+Designed to be hosted on GitHub Pages or any static file host - no server, no build step, no dependencies.
 
 ---
 
