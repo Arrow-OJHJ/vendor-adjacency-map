@@ -4,31 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arrow ECS UK – Vendor Line Card 2026</title>
+  <link rel="stylesheet" href="assets/arrow-tokens.css" />
   <style>
-    /* ── Carbon / IBM Design tokens ── */
+    /* ── Category tag colour palette (functional — retained as-is) ── */
     :root {
-      --blue-60: #0f62fe;
-      --blue-70: #0043ce;
-      --blue-10: #edf5ff;
-      --blue-20: #d0e2ff;
-      --gray-10: #f4f4f4;
-      --gray-20: #e0e0e0;
-      --gray-30: #c6c6c6;
-      --gray-50: #8d8d8d;
-      --gray-70: #525252;
-      --gray-90: #262626;
-      --gray-100: #161616;
-      --white: #ffffff;
-      --red-60: #da1e28;
-      --teal-50: #009d9a;
-      --purple-60: #8a3ffc;
-      --orange-40: #ff832b;
-      --green-50: #198038;
-      --magenta-50: #ee5396;
-      --cyan-40: #33b1ff;
-      --yellow-30: #f1c21b;
-
-      /* tag colour palette (9 categories) */
       --tag-dc:       #0f62fe; /* Data Centre */
       --tag-bi:       #8a3ffc; /* Business Intelligence */
       --tag-cloud:    #009d9a; /* Cloud */
@@ -43,98 +22,114 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--arrow-font-text);
       font-size: 14px;
       line-height: 1.5;
-      background: var(--gray-10);
-      color: var(--gray-100);
+      background: var(--arrow-color-bg-secondary);
+      color: var(--arrow-color-text-primary);
     }
 
     /* ── Top bar ── */
     header {
-      background: var(--gray-100);
-      color: var(--white);
+      background: var(--arrow-color-bg-inverse);
+      color: var(--arrow-color-text-inverse);
       padding: 0 2rem;
       display: flex;
       align-items: center;
-      height: 48px;
+      height: 56px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--gray-90);
+      z-index: var(--arrow-z-sticky);
+      border-bottom: 1px solid var(--arrow-color-neutral-800);
     }
-    header .logo {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--white);
+    .header-logo {
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      margin-right: 1.5rem;
+      flex-shrink: 0;
     }
-    header .logo span { color: var(--blue-60); }
-    header .divider {
+    .header-logo svg {
+      height: 22px;
+      width: auto;
+    }
+    .header-divider {
       width: 1px;
       height: 24px;
-      background: var(--gray-70);
-      margin-right: 1.5rem;
+      background: var(--arrow-color-neutral-600);
+      margin: 0 1.25rem;
+      flex-shrink: 0;
     }
-    header .page-title {
-      font-size: 14px;
-      color: var(--gray-30);
-      font-weight: 400;
+    .header-page-title {
+      font-family: var(--arrow-font-text);
+      font-size: 13px;
+      color: var(--arrow-color-neutral-400);
+      font-weight: var(--arrow-font-weight-regular);
+      letter-spacing: 0.01em;
     }
 
     /* ── Hero ── */
     .hero {
-      background: var(--gray-100);
-      color: var(--white);
+      background: var(--arrow-color-bg-inverse);
+      color: var(--arrow-color-text-inverse);
       padding: 2.5rem 2rem 2rem;
+      border-bottom: 3px solid var(--arrow-color-brand-orange);
     }
     .hero-eyebrow {
+      font-family: var(--arrow-font-text);
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-weight: var(--arrow-font-weight-medium);
+      letter-spacing: var(--arrow-font-ls-overline);
       text-transform: uppercase;
-      color: var(--gray-50);
+      color: var(--arrow-color-neutral-500);
       margin-bottom: 0.5rem;
     }
     .hero h1 {
-      font-size: clamp(26px, 3vw, 36px);
-      font-weight: 600;
-      line-height: 1.15;
-      margin-bottom: 0.25rem;
+      font-family: var(--arrow-font-display);
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: var(--arrow-font-weight-light);
+      line-height: 1.1;
+      letter-spacing: var(--arrow-font-ls-h1);
+      margin-bottom: 0.35rem;
       white-space: nowrap;
     }
     .hero h1 + .hero-sub {
+      font-family: var(--arrow-font-text);
       font-size: clamp(14px, 1.5vw, 17px);
-      font-weight: 300;
-      color: var(--gray-30);
+      font-weight: var(--arrow-font-weight-light);
+      color: var(--arrow-color-neutral-400);
       margin-bottom: 1rem;
       white-space: nowrap;
     }
     .hero p {
+      font-family: var(--arrow-font-text);
       font-size: 14px;
-      color: var(--gray-50);
+      color: var(--arrow-color-neutral-500);
       max-width: 560px;
+      line-height: 1.6;
     }
     .hero .meta {
       margin-top: 1rem;
       font-size: 12px;
-      color: var(--gray-70);
+      color: var(--arrow-color-neutral-600);
     }
+    .hero .meta a {
+      color: var(--arrow-color-neutral-500);
+      text-decoration: none;
+    }
+    .hero .meta a:hover { color: var(--arrow-color-neutral-300); }
 
     /* ── Controls ── */
     .controls {
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-20);
+      background: var(--arrow-color-bg-primary);
+      border-bottom: 1px solid var(--arrow-color-border-subtle);
       padding: 1rem 2rem;
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       align-items: flex-start;
       position: sticky;
-      top: 48px;
-      z-index: 90;
+      top: 56px;
+      z-index: var(--arrow-z-dropdown);
     }
 
     /* Search */
@@ -149,28 +144,29 @@
       top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
-      fill: var(--gray-50);
+      fill: var(--arrow-color-neutral-500);
     }
     .search-wrap input {
       width: 100%;
       height: 40px;
       padding: 0 1rem 0 2.5rem;
-      border: 1px solid var(--gray-30);
-      background: var(--gray-10);
-      color: var(--gray-100);
+      border: 1px solid var(--arrow-color-border-default);
+      background: var(--arrow-color-bg-secondary);
+      color: var(--arrow-color-text-primary);
       font-size: 14px;
-      font-family: inherit;
+      font-family: var(--arrow-font-text);
       outline: none;
-      border-radius: 0;
+      border-radius: var(--arrow-radius-none);
+      transition: border-color 0.15s;
     }
     .search-wrap input:focus {
-      border-color: var(--blue-60);
-      outline: 2px solid var(--blue-60);
+      border-color: var(--arrow-color-brand-orange);
+      outline: 2px solid var(--arrow-color-focus-ring);
       outline-offset: -2px;
     }
-    .search-wrap input::placeholder { color: var(--gray-50); }
+    .search-wrap input::placeholder { color: var(--arrow-color-neutral-500); }
 
-    /* Filter tags */
+    /* Filter buttons */
     .filter-group {
       display: flex;
       flex-wrap: wrap;
@@ -178,8 +174,9 @@
       align-items: center;
     }
     .filter-label {
+      font-family: var(--arrow-font-text);
       font-size: 12px;
-      color: var(--gray-50);
+      color: var(--arrow-color-text-tertiary);
       margin-right: 0.25rem;
       white-space: nowrap;
     }
@@ -188,14 +185,14 @@
       align-items: center;
       gap: 5px;
       padding: 4px 10px;
-      border: 1px solid var(--gray-30);
-      background: var(--white);
+      border: 1px solid var(--arrow-color-border-default);
+      background: var(--arrow-color-bg-primary);
       font-size: 12px;
-      font-family: inherit;
+      font-family: var(--arrow-font-text);
       cursor: pointer;
-      border-radius: 0;
-      color: var(--gray-70);
-      transition: background 0.1s, color 0.1s;
+      border-radius: var(--arrow-radius-none);
+      color: var(--arrow-color-text-secondary);
+      transition: background 0.1s, color 0.1s, border-color 0.1s;
       white-space: nowrap;
     }
     .filter-btn .dot {
@@ -204,33 +201,36 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-    .filter-btn:hover { background: var(--gray-10); }
+    .filter-btn:hover {
+      background: var(--arrow-color-bg-secondary);
+      border-color: var(--arrow-color-border-strong);
+    }
+    /* Active state: each filter uses its own category colour */
     .filter-btn.active {
-      color: var(--white);
+      color: #ffffff;
       border-color: transparent;
     }
-
-    .filter-btn[data-tag="Data Centre"].active       { background: var(--tag-dc); }
+    .filter-btn[data-tag="Data Centre"].active           { background: var(--tag-dc); }
     .filter-btn[data-tag="Business Intelligence"].active { background: var(--tag-bi); }
-    .filter-btn[data-tag="Cloud"].active             { background: var(--tag-cloud); }
-    .filter-btn[data-tag="Mobility"].active          { background: var(--tag-mob); }
-    .filter-btn[data-tag="Security"].active          { background: var(--tag-sec); }
-    .filter-btn[data-tag="Networking"].active        { background: var(--tag-net); }
-    .filter-btn[data-tag="IoT and Edge"].active      { background: var(--tag-iot); }
-    .filter-btn[data-tag="ArrowSphere"].active       { background: var(--tag-arrow); }
-    .filter-btn[data-tag="DevOps"].active            { background: var(--tag-devops); }
+    .filter-btn[data-tag="Cloud"].active                 { background: var(--tag-cloud); }
+    .filter-btn[data-tag="Mobility"].active              { background: var(--tag-mob); }
+    .filter-btn[data-tag="Security"].active              { background: var(--tag-sec); }
+    .filter-btn[data-tag="Networking"].active            { background: var(--tag-net); }
+    .filter-btn[data-tag="IoT and Edge"].active          { background: var(--tag-iot); }
+    .filter-btn[data-tag="ArrowSphere"].active           { background: var(--tag-arrow); }
+    .filter-btn[data-tag="DevOps"].active                { background: var(--tag-devops); }
 
     .clear-btn {
       background: none;
       border: none;
-      color: var(--blue-60);
+      color: var(--arrow-color-text-link);
       font-size: 12px;
-      font-family: inherit;
+      font-family: var(--arrow-font-text);
       cursor: pointer;
       padding: 4px 6px;
       text-decoration: underline;
     }
-    .clear-btn:hover { color: var(--blue-70); }
+    .clear-btn:hover { color: var(--arrow-color-text-link-hover); }
 
     /* Sort dropdown */
     .sort-wrap {
@@ -242,23 +242,24 @@
     .sort-wrap select {
       height: 40px;
       padding: 0 2rem 0 0.75rem;
-      border: 1px solid var(--gray-30);
-      background: var(--gray-10);
-      color: var(--gray-100);
+      border: 1px solid var(--arrow-color-border-default);
+      background: var(--arrow-color-bg-secondary);
+      color: var(--arrow-color-text-primary);
       font-size: 12px;
-      font-family: inherit;
+      font-family: var(--arrow-font-text);
       outline: none;
-      border-radius: 0;
+      border-radius: var(--arrow-radius-none);
       appearance: none;
       -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 32 32'%3E%3Cpath fill='%238d8d8d' d='M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 32 32'%3E%3Cpath fill='%235C5C5C' d='M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 0.5rem center;
       cursor: pointer;
+      transition: border-color 0.15s;
     }
     .sort-wrap select:focus {
-      border-color: var(--blue-60);
-      outline: 2px solid var(--blue-60);
+      border-color: var(--arrow-color-brand-orange);
+      outline: 2px solid var(--arrow-color-focus-ring);
       outline-offset: -2px;
     }
 
@@ -266,7 +267,8 @@
     .results-bar {
       padding: 0.75rem 2rem;
       font-size: 12px;
-      color: var(--gray-50);
+      font-family: var(--arrow-font-text);
+      color: var(--arrow-color-text-tertiary);
     }
 
     /* ── Grid ── */
@@ -275,12 +277,12 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1px;
       padding: 0 2rem 2rem;
-      background: var(--gray-20);
+      background: var(--arrow-color-border-subtle);
     }
 
     /* ── Card ── */
     .card {
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
       padding: 1.25rem 1.25rem 1rem;
       display: flex;
       flex-direction: column;
@@ -288,7 +290,7 @@
       transition: box-shadow 0.15s;
     }
     .card:hover {
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      box-shadow: var(--arrow-shadow-md);
       position: relative;
       z-index: 1;
     }
@@ -296,35 +298,37 @@
 
     .card { cursor: default; }
     .card.has-page { cursor: pointer; }
-    .card.has-page:hover .card-name { color: var(--blue-60); }
+    .card.has-page:hover .card-name { color: var(--arrow-color-text-link); }
 
     .card-name {
+      font-family: var(--arrow-font-text);
       font-size: 14px;
-      font-weight: 600;
-      color: var(--gray-100);
+      font-weight: var(--arrow-font-weight-medium);
+      color: var(--arrow-color-text-primary);
       line-height: 1.3;
       transition: color 0.1s;
     }
 
     .card-coming-soon {
       font-size: 11px;
-      color: var(--gray-50);
+      color: var(--arrow-color-neutral-500);
       margin-top: 2px;
     }
 
     .card-arrow {
       display: none;
       font-size: 11px;
-      color: var(--blue-60);
-      font-weight: 600;
+      color: var(--arrow-color-text-link);
+      font-weight: var(--arrow-font-weight-medium);
       margin-top: 2px;
     }
     .card.has-page .card-arrow { display: block; }
     .card.has-page .card-coming-soon { display: none; }
 
     .card-desc {
+      font-family: var(--arrow-font-text);
       font-size: 13px;
-      color: var(--gray-70);
+      color: var(--arrow-color-text-secondary);
       line-height: 1.5;
       flex: 1;
     }
@@ -340,10 +344,11 @@
       align-items: center;
       gap: 4px;
       padding: 2px 8px;
+      font-family: var(--arrow-font-text);
       font-size: 11px;
-      font-weight: 500;
-      color: var(--white);
-      border-radius: 0;
+      font-weight: var(--arrow-font-weight-medium);
+      color: #ffffff;
+      border-radius: var(--arrow-radius-none);
       white-space: nowrap;
     }
     .tag[data-tag="Data Centre"]           { background: var(--tag-dc); }
@@ -354,41 +359,51 @@
     .tag[data-tag="Networking"]            { background: var(--tag-net); }
     .tag[data-tag="IoT and Edge"]          { background: var(--tag-iot); }
     .tag[data-tag="ArrowSphere"]           { background: var(--tag-arrow); }
-    .tag[data-tag="DevOps"]               { background: var(--tag-devops); }
+    .tag[data-tag="DevOps"]                { background: var(--tag-devops); }
 
     /* no results */
     .no-results {
       grid-column: 1 / -1;
       text-align: center;
       padding: 3rem;
-      color: var(--gray-50);
+      color: var(--arrow-color-text-tertiary);
+      font-family: var(--arrow-font-text);
       font-size: 14px;
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
     }
 
     /* ── Footer ── */
     footer {
-      background: var(--gray-100);
-      color: var(--gray-50);
+      background: var(--arrow-color-bg-inverse);
+      color: var(--arrow-color-neutral-500);
+      font-family: var(--arrow-font-text);
       font-size: 12px;
       padding: 1.5rem 2rem;
-      border-top: 1px solid var(--gray-90);
+      border-top: 1px solid var(--arrow-color-neutral-800);
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       justify-content: space-between;
       align-items: center;
     }
-    footer a { color: var(--gray-30); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    footer a {
+      color: var(--arrow-color-neutral-400);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--arrow-color-text-inverse);
+      text-decoration: underline;
+    }
 
     @media (max-width: 600px) {
-      .controls { padding: 0.75rem 1rem; top: 48px; }
+      .controls { padding: 0.75rem 1rem; top: 56px; }
       .grid { padding: 0 1rem 2rem; }
       .results-bar { padding: 0.5rem 1rem; }
       .hero { padding: 2rem 1rem 1.5rem; }
       header { padding: 0 1rem; }
       footer { padding: 1rem; }
+      .hero h1 { white-space: normal; }
+      .hero h1 + .hero-sub { white-space: normal; }
     }
   </style>
 </head>
@@ -396,9 +411,15 @@
 
 <!-- Top nav -->
 <header>
-  <a class="logo" href="#">Arrow ECS</a>
-  <div class="divider"></div>
-  <span class="page-title">UK Vendor Line Card 2026</span>
+  <a class="header-logo" href="#" aria-label="Arrow Electronics">
+    <!-- Arrow worm logo — white version for dark header -->
+    <svg viewBox="0 0 399.3 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path fill="#FFFFFF" d="M64.9,120c-0.4,0-0.8,0-1.2-0.1c-2.6-0.6-4.3-3.3-3.6-5.9L72,64.7c0.5-2.2,2.5-3.8,4.8-3.8h13.4c2.3,0,4.3,1.6,4.8,3.8l10.7,44.6h7.8V65.8c0-2.7,2.2-4.9,4.9-4.9H143c2.7,0,4.9,2.2,4.9,4.9v22.5l11.4,21h4.7V65.8c0-2.7,2.2-4.9,4.9-4.9h24.6c2.7,0,4.9,2.2,4.9,4.9v22.5l11.4,21h33.8V80.6c0-2.7,2.2-4.9,4.9-4.9c2.7,0,4.9,2.2,4.9,4.9v33.6c0,2.7-2.2,4.9-4.9,4.9h-41.6c-1.8,0-3.5-1-4.3-2.6l-13.4-24.6c-0.4-0.7-0.6-1.5-0.6-2.4V70.7h-14.8v43.4c0,2.7-2.2,4.9-4.9,4.9h-12.5c-1.8,0-3.5-1-4.3-2.6l-13.4-24.6c-0.4-0.7-0.6-1.5-0.6-2.4V70.7h-14.8v43.4c0,2.7-2.2,4.9-4.9,4.9h-16.6c-2.3,0-4.3-1.6-4.8-3.8L86.3,70.7h-5.7l-10.9,45.5C69.2,118.5,67.2,120,64.9,120z"/>
+      <path fill="#FFFFFF" d="M324.8,119.1h-10.7c-2.4,0-4.4-1.7-4.8-4l-8.6-44.4h-1.3l-8.6,44.4c-0.5,2.3-2.5,4-4.8,4h-10.7c-2.4,0-4.4-1.7-4.8-4l-8.6-44.4h-38v28.7c0,2.7-2.2,4.9-4.9,4.9c-2.7,0-4.9-2.2-4.9-4.9V65.8c0-2.7,2.2-4.9,4.9-4.9h47c2.4,0,4.4,1.7,4.8,4l8.6,44.4h2.6l8.6-44.4c0.5-2.3,2.5-4,4.8-4h9.4c2.4,0,4.4,1.7,4.8,4l8.6,44.4h2.6l8.8-45.3c0.5-2.7,3.1-4.4,5.8-3.9c2.7,0.5,4.4,3.1,3.9,5.8l-9.6,49.2C329.2,117.4,327.2,119.1,324.8,119.1z"/>
+    </svg>
+  </a>
+  <div class="header-divider"></div>
+  <span class="header-page-title">ECS UK &nbsp;·&nbsp; Vendor Line Card 2026</span>
 </header>
 
 <!-- Hero -->
@@ -407,13 +428,13 @@
   <h1>Vendor Line Card 2026</h1>
   <p class="hero-sub">Enterprise Computing Solutions</p>
   <p>Market-leading portfolio of technology vendors available as of 1 July 2026. Search, filter by category, or click a vendor to explore.</p>
-  <p class="meta">Source: Arrow ECS UK Line Card 2026 &nbsp;·&nbsp; <a href="https://www.arrow.com/globalecs/uk/products/" style="color:var(--gray-50)">arrow.com/globalecs/uk/products</a></p>
+  <p class="meta">Source: Arrow ECS UK Line Card 2026 &nbsp;·&nbsp; <a href="https://www.arrow.com/globalecs/uk/products/">arrow.com/globalecs/uk/products</a></p>
 </section>
 
 <!-- Controls -->
 <div class="controls">
   <div class="search-wrap">
-    <svg width="16" height="16" viewBox="0 0 32 32"><path d="M29 27.586l-7.552-7.552A11.018 11.018 0 1 0 19.434 22.02L26.986 29.6 29 27.586zM13 22a9 9 0 1 1 9-9 9.01 9.01 0 0 1-9 9z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true"><path d="M29 27.586l-7.552-7.552A11.018 11.018 0 1 0 19.434 22.02L26.986 29.6 29 27.586zM13 22a9 9 0 1 1 9-9 9.01 9.01 0 0 1-9 9z"/></svg>
     <input type="text" id="searchInput" placeholder="Search vendors…" autocomplete="off" />
   </div>
 

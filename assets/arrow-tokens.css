@@ -1,0 +1,408 @@
+/**
+ * Arrow Design System — Combined Tokens
+ * Colours · Spacing · Typography
+ * Version: 1.0.0
+ *
+ * Sourced from the Arrow Design System.
+ * Font files served from ./fonts/ (relative to this stylesheet).
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   @font-face — ArrowDisplay
+   Headlines, hero text, and large UI labels.
+═══════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_Lt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_LtIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_Rg.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_It.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_Md.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_MdIt.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_Bd.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowDisplay';
+  src: url('./fonts/ArrowDisplay_BdIt.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   @font-face — ArrowText
+   Body copy, UI labels, captions, and functional text.
+═══════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_Lt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_LtIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_Rg.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_It.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_Md.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_MdIt.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_Bd.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArrowText';
+  src: url('./fonts/ArrowText_BdIt.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+═══════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ─────────────────────────────────────────────
+     FONT FAMILIES
+  ───────────────────────────────────────────── */
+  --arrow-font-display: 'ArrowDisplay', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  --arrow-font-text:    'ArrowText',    'Nunito Sans', system-ui, -apple-system, sans-serif;
+  --arrow-font-mono:    'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+
+  /* ─────────────────────────────────────────────
+     FONT WEIGHTS
+  ───────────────────────────────────────────── */
+  --arrow-font-weight-light:   300;
+  --arrow-font-weight-regular: 400;
+  --arrow-font-weight-medium:  500;
+  --arrow-font-weight-bold:    700;
+
+  /* ─────────────────────────────────────────────
+     TYPE SCALE
+  ───────────────────────────────────────────── */
+  --arrow-font-size-display:   3.815rem;
+  --arrow-font-lh-display:     1.1;
+  --arrow-font-ls-display:     -0.02em;
+
+  --arrow-font-size-h1:        3.052rem;
+  --arrow-font-lh-h1:          1.15;
+  --arrow-font-ls-h1:          -0.02em;
+
+  --arrow-font-size-h2:        2.441rem;
+  --arrow-font-lh-h2:          1.2;
+  --arrow-font-ls-h2:          -0.015em;
+
+  --arrow-font-size-h3:        1.953rem;
+  --arrow-font-lh-h3:          1.25;
+  --arrow-font-ls-h3:          -0.01em;
+
+  --arrow-font-size-h4:        1.563rem;
+  --arrow-font-lh-h4:          1.3;
+  --arrow-font-ls-h4:          -0.005em;
+
+  --arrow-font-size-body-lg:   1.25rem;
+  --arrow-font-lh-body-lg:     1.6;
+
+  --arrow-font-size-body:      1rem;
+  --arrow-font-lh-body:        1.6;
+
+  --arrow-font-size-body-sm:   0.875rem;
+  --arrow-font-lh-body-sm:     1.5;
+
+  --arrow-font-size-caption:   0.75rem;
+  --arrow-font-lh-caption:     1.4;
+
+  --arrow-font-size-overline:  0.75rem;
+  --arrow-font-lh-overline:    1.4;
+  --arrow-font-ls-overline:    0.1em;
+
+  --arrow-text-max-width:      72ch;
+
+  /* ─────────────────────────────────────────────
+     BRAND CORE
+  ───────────────────────────────────────────── */
+  --arrow-color-brand-orange:  #FF6600;
+  --arrow-color-brand-black:   #000000;
+  --arrow-color-brand-white:   #FFFFFF;
+
+  /* ─────────────────────────────────────────────
+     NEUTRAL SCALE
+  ───────────────────────────────────────────── */
+  --arrow-color-neutral-100:   #F7F7F7;
+  --arrow-color-neutral-200:   #EBEBEB;
+  --arrow-color-neutral-300:   #D6D6D6;
+  --arrow-color-neutral-400:   #ADADAD;
+  --arrow-color-neutral-500:   #858585;
+  --arrow-color-neutral-600:   #5C5C5C;
+  --arrow-color-neutral-700:   #3D3D3D;
+  --arrow-color-neutral-800:   #1F1F1F;
+  --arrow-color-neutral-900:   #0A0A0A;
+
+  /* ─────────────────────────────────────────────
+     ORANGE SCALE
+  ───────────────────────────────────────────── */
+  --arrow-color-orange-50:     #FFF3EB;
+  --arrow-color-orange-100:    #FFE0CC;
+  --arrow-color-orange-200:    #FFBB99;
+  --arrow-color-orange-300:    #FF9666;
+  --arrow-color-orange-400:    #FF7733;
+  --arrow-color-orange-500:    #FF6600;
+  --arrow-color-orange-600:    #CC5200;
+  --arrow-color-orange-700:    #993D00;
+  --arrow-color-orange-800:    #662900;
+  --arrow-color-orange-900:    #331400;
+
+  /* ─────────────────────────────────────────────
+     SEMANTIC — BACKGROUND
+  ───────────────────────────────────────────── */
+  --arrow-color-bg-primary:    #FFFFFF;
+  --arrow-color-bg-secondary:  #F7F7F7;
+  --arrow-color-bg-tertiary:   #EBEBEB;
+  --arrow-color-bg-inverse:    #000000;
+  --arrow-color-bg-brand:      #FF6600;
+
+  /* ─────────────────────────────────────────────
+     SEMANTIC — SURFACE
+  ───────────────────────────────────────────── */
+  --arrow-color-surface-default:  #FFFFFF;
+  --arrow-color-surface-raised:   #F7F7F7;
+  --arrow-color-surface-overlay:  #EBEBEB;
+  --arrow-color-surface-inverse:  #1F1F1F;
+
+  /* ─────────────────────────────────────────────
+     SEMANTIC — BORDER
+  ───────────────────────────────────────────── */
+  --arrow-color-border-subtle:  #EBEBEB;
+  --arrow-color-border-default: #D6D6D6;
+  --arrow-color-border-strong:  #5C5C5C;
+  --arrow-color-border-inverse: #FFFFFF;
+  --arrow-color-border-brand:   #FF6600;
+
+  /* ─────────────────────────────────────────────
+     SEMANTIC — TEXT
+  ───────────────────────────────────────────── */
+  --arrow-color-text-primary:   #000000;
+  --arrow-color-text-secondary: #3D3D3D;
+  --arrow-color-text-tertiary:  #5C5C5C;
+  --arrow-color-text-disabled:  #ADADAD;
+  --arrow-color-text-inverse:   #FFFFFF;
+  --arrow-color-text-brand:     #FF6600;
+  --arrow-color-text-link:      #CC5200;
+  --arrow-color-text-link-hover: #993D00;
+
+  /* ─────────────────────────────────────────────
+     SEMANTIC — INTERACTIVE
+  ───────────────────────────────────────────── */
+  --arrow-color-interactive-default:  #FF6600;
+  --arrow-color-interactive-hover:    #CC5200;
+  --arrow-color-interactive-active:   #993D00;
+  --arrow-color-interactive-disabled: #ADADAD;
+  --arrow-color-interactive-focus:    #FF6600;
+  --arrow-color-focus-ring:           #FF6600;
+  --arrow-color-focus-ring-inverse:   #FFFFFF;
+
+  /* ─────────────────────────────────────────────
+     SEMANTIC — STATUS
+  ───────────────────────────────────────────── */
+  --arrow-color-success-subtle:  #ECFDF5;
+  --arrow-color-success-default: #16A34A;
+  --arrow-color-success-strong:  #15803D;
+  --arrow-color-success-text:    #14532D;
+
+  --arrow-color-warning-subtle:  #FFFBEB;
+  --arrow-color-warning-default: #D97706;
+  --arrow-color-warning-strong:  #B45309;
+  --arrow-color-warning-text:    #78350F;
+
+  --arrow-color-error-subtle:    #FEF2F2;
+  --arrow-color-error-default:   #DC2626;
+  --arrow-color-error-strong:    #B91C1C;
+  --arrow-color-error-text:      #7F1D1D;
+
+  --arrow-color-info-subtle:     #EFF6FF;
+  --arrow-color-info-default:    #2563EB;
+  --arrow-color-info-strong:     #1D4ED8;
+  --arrow-color-info-text:       #1E3A8A;
+
+  --arrow-color-overlay:         rgba(0, 0, 0, 0.50);
+  --arrow-color-overlay-light:   rgba(0, 0, 0, 0.25);
+
+  /* ─────────────────────────────────────────────
+     SPACING SCALE  (base-4, in rem)
+  ───────────────────────────────────────────── */
+  --arrow-space-1:   0.25rem;
+  --arrow-space-2:   0.5rem;
+  --arrow-space-3:   0.75rem;
+  --arrow-space-4:   1rem;
+  --arrow-space-5:   1.25rem;
+  --arrow-space-6:   1.5rem;
+  --arrow-space-8:   2rem;
+  --arrow-space-10:  2.5rem;
+  --arrow-space-12:  3rem;
+  --arrow-space-16:  4rem;
+  --arrow-space-20:  5rem;
+  --arrow-space-24:  6rem;
+  --arrow-space-32:  8rem;
+
+  /* Inset */
+  --arrow-inset-xs:  var(--arrow-space-1);
+  --arrow-inset-sm:  var(--arrow-space-2);
+  --arrow-inset-md:  var(--arrow-space-4);
+  --arrow-inset-lg:  var(--arrow-space-6);
+  --arrow-inset-xl:  var(--arrow-space-8);
+
+  /* Stack */
+  --arrow-stack-xs:  var(--arrow-space-1);
+  --arrow-stack-sm:  var(--arrow-space-2);
+  --arrow-stack-md:  var(--arrow-space-4);
+  --arrow-stack-lg:  var(--arrow-space-8);
+  --arrow-stack-xl:  var(--arrow-space-12);
+  --arrow-stack-2xl: var(--arrow-space-16);
+  --arrow-stack-3xl: var(--arrow-space-24);
+
+  /* Inline */
+  --arrow-inline-xs: var(--arrow-space-1);
+  --arrow-inline-sm: var(--arrow-space-2);
+  --arrow-inline-md: var(--arrow-space-4);
+  --arrow-inline-lg: var(--arrow-space-6);
+  --arrow-inline-xl: var(--arrow-space-8);
+
+  /* Section padding */
+  --arrow-section-sm:  var(--arrow-space-12);
+  --arrow-section-md:  var(--arrow-space-16);
+  --arrow-section-lg:  var(--arrow-space-24);
+  --arrow-section-xl:  var(--arrow-space-32);
+
+  /* ─────────────────────────────────────────────
+     BORDER RADIUS
+  ───────────────────────────────────────────── */
+  --arrow-radius-none: 0;
+  --arrow-radius-sm:   0.125rem;
+  --arrow-radius-md:   0.25rem;
+  --arrow-radius-lg:   0.5rem;
+  --arrow-radius-xl:   1rem;
+  --arrow-radius-pill: 9999px;
+
+  /* ─────────────────────────────────────────────
+     ELEVATION / SHADOW
+  ───────────────────────────────────────────── */
+  --arrow-shadow-none: none;
+  --arrow-shadow-sm:   0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  --arrow-shadow-md:   0 2px 8px 0 rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --arrow-shadow-lg:   0 8px 24px 0 rgba(0, 0, 0, 0.12), 0 2px 6px 0 rgba(0, 0, 0, 0.08);
+  --arrow-shadow-xl:   0 20px 48px 0 rgba(0, 0, 0, 0.16), 0 4px 12px 0 rgba(0, 0, 0, 0.10);
+
+  /* ─────────────────────────────────────────────
+     Z-INDEX STACK
+  ───────────────────────────────────────────── */
+  --arrow-z-base:     0;
+  --arrow-z-raised:   10;
+  --arrow-z-dropdown: 100;
+  --arrow-z-sticky:   200;
+  --arrow-z-overlay:  300;
+  --arrow-z-modal:    400;
+  --arrow-z-toast:    500;
+  --arrow-z-tooltip:  600;
+
+  /* ─────────────────────────────────────────────
+     GRID
+  ───────────────────────────────────────────── */
+  --arrow-grid-columns:    12;
+  --arrow-grid-max-width:  90rem;
+  --arrow-grid-gutter-sm:  var(--arrow-space-4);
+  --arrow-grid-gutter-md:  var(--arrow-space-6);
+  --arrow-grid-gutter-lg:  var(--arrow-space-8);
+  --arrow-grid-margin-sm:  var(--arrow-space-4);
+  --arrow-grid-margin-md:  var(--arrow-space-8);
+  --arrow-grid-margin-lg:  var(--arrow-space-12);
+
+}

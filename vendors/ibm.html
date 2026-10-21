@@ -4,31 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IBM – Arrow ECS UK Vendor Profile</title>
+  <link rel="stylesheet" href="../assets/arrow-tokens.css" />
   <style>
+    /* ── Category tag colours (functional — retained as-is) ── */
     :root {
-      --blue-60: #0f62fe;
-      --blue-70: #0043ce;
-      --blue-10: #edf5ff;
-      --blue-20: #d0e2ff;
-      --gray-10: #f4f4f4;
-      --gray-20: #e0e0e0;
-      --gray-30: #c6c6c6;
-      --gray-50: #8d8d8d;
-      --gray-70: #525252;
-      --gray-90: #262626;
-      --gray-100: #161616;
-      --white: #ffffff;
-      --green-50: #198038;
-      --green-10: #defbe6;
-      --red-60: #da1e28;
-      --red-10: #fff1f1;
-      --yellow-20: #fdd13a;
-      --yellow-10: #fdf6dd;
-      --purple-60: #8a3ffc;
-      --purple-10: #f6f2ff;
-      --teal-50: #009d9a;
-      --teal-10: #d9fbfb;
-
       --tag-dc:       #0f62fe;
       --tag-bi:       #8a3ffc;
       --tag-cloud:    #009d9a;
@@ -38,64 +17,64 @@
       --tag-iot:      #ff832b;
       --tag-arrow:    #0043ce;
       --tag-devops:   #6929c4;
+      /* Cross-sell badge colours — functional indicators, retained */
+      --badge-complement: #198038;
+      --badge-partner:    #0043ce;
+      --badge-expand:     #8a3ffc;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--arrow-font-text);
       font-size: 14px;
       line-height: 1.6;
-      background: var(--gray-10);
-      color: var(--gray-100);
+      background: var(--arrow-color-bg-secondary);
+      color: var(--arrow-color-text-primary);
     }
 
     /* ── Header ── */
     header {
-      background: var(--gray-100);
-      color: var(--white);
+      background: var(--arrow-color-bg-inverse);
+      color: var(--arrow-color-text-inverse);
       padding: 0 2rem;
       display: flex;
       align-items: center;
-      height: 48px;
+      height: 56px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--gray-90);
+      z-index: var(--arrow-z-sticky);
+      border-bottom: 1px solid var(--arrow-color-neutral-800);
     }
-    .logo { font-size: 14px; font-weight: 600; color: var(--white); text-decoration: none; margin-right: 1.5rem; }
-    .divider { width: 1px; height: 24px; background: var(--gray-70); margin-right: 1.5rem; }
-    .breadcrumb { font-size: 14px; color: var(--gray-50); }
-    .breadcrumb a { color: var(--gray-30); text-decoration: none; }
+    .logo { font-size: 14px; font-weight: 600; color: var(--arrow-color-text-inverse); text-decoration: none; margin-right: 1.5rem; }
+    .divider { width: 1px; height: 24px; background: var(--arrow-color-neutral-600); margin: 0 1.25rem; }
+    .breadcrumb { font-size: 14px; color: var(--arrow-color-text-tertiary); }
+    .breadcrumb a { color: var(--arrow-color-neutral-400); text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { margin: 0 0.5rem; color: var(--gray-70); }
+    .breadcrumb span { margin: 0 0.5rem; color: var(--arrow-color-text-tertiary); }
+    .header-logo { display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
 
     /* ── Hero ── */
     .hero {
-      background: var(--gray-100);
-      color: var(--white);
+      background: var(--arrow-color-bg-inverse);
+      color: var(--arrow-color-text-inverse);
       padding: 3rem 2rem 2.5rem;
-      border-bottom: 3px solid var(--blue-60);
+      border-bottom: 3px solid var(--tag-dc);
     }
     .hero-inner { max-width: 900px; }
-    .vendor-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--blue-60);
-      margin-bottom: 0.5rem;
-    }
+    .vendor-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--arrow-color-text-tertiary); margin-bottom: 0.5rem; }
     .hero h1 {
       font-size: clamp(28px, 4vw, 42px);
+      font-family: var(--arrow-font-display);
       font-weight: 300;
       line-height: 1.15;
+      letter-spacing: var(--arrow-font-ls-h1);
       margin-bottom: 0.75rem;
     }
     .hero h1 strong { font-weight: 600; }
     .hero .tagline {
       font-size: 16px;
-      color: var(--gray-30);
+      color: var(--arrow-color-neutral-400);
       max-width: 620px;
       margin-bottom: 1.25rem;
     }
@@ -103,7 +82,7 @@
     .tag {
       display: inline-flex; align-items: center;
       padding: 3px 10px; font-size: 11px; font-weight: 500;
-      color: var(--white); white-space: nowrap;
+      color: var(--arrow-color-text-inverse); white-space: nowrap;
     }
     .tag[data-tag="Data Centre"]           { background: var(--tag-dc); }
     .tag[data-tag="Business Intelligence"] { background: var(--tag-bi); }
@@ -131,23 +110,18 @@
 
     /* ── Sections ── */
     .section {
-      background: var(--white);
-      border: 1px solid var(--gray-20);
+      background: var(--arrow-color-surface-default);
+      border: 1px solid var(--arrow-color-border-subtle);
       margin-bottom: 1.5rem;
     }
     .section-header {
       padding: 1rem 1.25rem 0.875rem;
-      border-bottom: 1px solid var(--gray-20);
+      border-bottom: 1px solid var(--arrow-color-border-subtle);
       display: flex;
       align-items: center;
       gap: 0.625rem;
     }
-    .section-header h2 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--gray-100);
-      letter-spacing: 0.01em;
-    }
+    .section-header h2 { font-size: 14px; font-weight: var(--arrow-font-weight-medium); font-family: var(--arrow-font-text); color: var(--arrow-color-text-primary); }
     .section-icon {
       width: 20px; height: 20px;
       display: flex; align-items: center; justify-content: center;
@@ -158,7 +132,7 @@
     /* ── Overview ── */
     .overview-text {
       font-size: 14px;
-      color: var(--gray-70);
+      color: var(--arrow-color-text-secondary);
       line-height: 1.7;
     }
 
@@ -167,22 +141,22 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1px;
-      background: var(--gray-20);
-      border: 1px solid var(--gray-20);
+      background: var(--arrow-color-border-subtle);
+      border: 1px solid var(--arrow-color-border-subtle);
     }
     .product-card {
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
       padding: 1rem 1.125rem;
     }
     .product-card-name {
       font-size: 13px;
       font-weight: 600;
-      color: var(--gray-100);
+      color: var(--arrow-color-text-primary);
       margin-bottom: 0.25rem;
     }
     .product-card-desc {
       font-size: 12px;
-      color: var(--gray-70);
+      color: var(--arrow-color-text-secondary);
       line-height: 1.5;
     }
     .product-card-tags {
@@ -193,42 +167,42 @@
       font-size: 10px;
       font-weight: 500;
       padding: 1px 6px;
-      background: var(--gray-10);
-      color: var(--gray-70);
-      border: 1px solid var(--gray-20);
+      background: var(--arrow-color-bg-secondary);
+      color: var(--arrow-color-text-secondary);
+      border: 1px solid var(--arrow-color-border-subtle);
     }
 
     /* ── Cross-sell cards ── */
-    .crosssell-list { display: flex; flex-direction: column; gap: 1px; background: var(--gray-20); border: 1px solid var(--gray-20); }
+    .crosssell-list { display: flex; flex-direction: column; gap: 1px; background: var(--arrow-color-border-subtle); border: 1px solid var(--arrow-color-border-subtle); }
     .crosssell-item {
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
       padding: 1rem 1.125rem;
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 0 1rem;
       align-items: start;
     }
-    .crosssell-item:hover { background: var(--blue-10); }
+    .crosssell-item:hover { background: var(--arrow-color-bg-secondary); }
     .crosssell-vendor {
       font-size: 13px;
       font-weight: 600;
-      color: var(--blue-60);
+      color: var(--arrow-color-text-link);
       grid-column: 2;
       text-decoration: none;
     }
-    .crosssell-vendor:hover { text-decoration: underline; }
+    .crosssell-vendor:hover { text-decoration: underline; color: var(--arrow-color-text-link-hover); }
     .crosssell-play {
       font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--gray-50);
+      color: var(--arrow-color-text-tertiary);
       grid-column: 2;
       margin-top: 1px;
     }
     .crosssell-why {
       font-size: 12px;
-      color: var(--gray-70);
+      color: var(--arrow-color-text-secondary);
       line-height: 1.55;
       grid-column: 2;
       margin-top: 4px;
@@ -238,16 +212,16 @@
       grid-row: 1 / 4;
       width: 8px;
       align-self: stretch;
-      min-height: 48px;
+      min-height: 56px;
     }
-    .badge-complement { background: var(--green-50); }
-    .badge-partner    { background: var(--blue-60); }
-    .badge-expand     { background: var(--purple-60); }
+    .badge-complement { background: var(--badge-complement); }
+    .badge-partner    { background: var(--badge-partner); }
+    .badge-expand     { background: var(--badge-expand); }
 
     /* ── Competitor table ── */
-    .competitor-list { display: flex; flex-direction: column; gap: 1px; background: var(--gray-20); border: 1px solid var(--gray-20); }
+    .competitor-list { display: flex; flex-direction: column; gap: 1px; background: var(--arrow-color-border-subtle); border: 1px solid var(--arrow-color-border-subtle); }
     .competitor-item {
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
       padding: 0.875rem 1.125rem;
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -257,16 +231,16 @@
     .competitor-name {
       font-size: 13px;
       font-weight: 600;
-      color: var(--gray-100);
+      color: var(--arrow-color-text-primary);
     }
     .competitor-space {
       font-size: 11px;
-      color: var(--gray-50);
+      color: var(--arrow-color-text-tertiary);
       margin-top: 2px;
     }
     .competitor-note {
       font-size: 12px;
-      color: var(--gray-70);
+      color: var(--arrow-color-text-secondary);
       line-height: 1.5;
     }
 
@@ -275,11 +249,11 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1px;
-      background: var(--gray-20);
-      border: 1px solid var(--gray-20);
+      background: var(--arrow-color-border-subtle);
+      border: 1px solid var(--arrow-color-border-subtle);
     }
     .icp-card {
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
       padding: 1rem 1.125rem;
     }
     .icp-label {
@@ -287,19 +261,19 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--gray-50);
+      color: var(--arrow-color-text-tertiary);
       margin-bottom: 0.375rem;
     }
     .icp-value {
       font-size: 13px;
-      color: var(--gray-100);
+      color: var(--arrow-color-text-primary);
       line-height: 1.5;
     }
 
     /* ── Sidebar ── */
     .sidebar-card {
-      background: var(--white);
-      border: 1px solid var(--gray-20);
+      background: var(--arrow-color-surface-default);
+      border: 1px solid var(--arrow-color-border-subtle);
       margin-bottom: 1.5rem;
     }
     .sidebar-card .section-header { padding: 0.875rem 1rem 0.75rem; }
@@ -308,7 +282,7 @@
     .arrow-advantage-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
     .arrow-advantage-list li {
       font-size: 13px;
-      color: var(--gray-70);
+      color: var(--arrow-color-text-secondary);
       padding-left: 1rem;
       position: relative;
       line-height: 1.5;
@@ -318,33 +292,33 @@
       position: absolute;
       left: 0; top: 0.45em;
       width: 6px; height: 6px;
-      background: var(--blue-60);
+      background: var(--arrow-color-neutral-600);
     }
 
-    .key-facts { display: flex; flex-direction: column; gap: 1px; background: var(--gray-20); border: 1px solid var(--gray-20); }
+    .key-facts { display: flex; flex-direction: column; gap: 1px; background: var(--arrow-color-border-subtle); border: 1px solid var(--arrow-color-border-subtle); }
     .key-fact {
-      background: var(--white);
+      background: var(--arrow-color-surface-default);
       padding: 0.75rem 1rem;
     }
-    .key-fact-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-50); margin-bottom: 2px; }
-    .key-fact-value { font-size: 13px; color: var(--gray-100); }
+    .key-fact-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--arrow-color-text-tertiary); margin-bottom: 2px; }
+    .key-fact-value { font-size: 13px; color: var(--arrow-color-text-primary); }
 
     .legend { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 12px; color: var(--gray-70); }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 12px; color: var(--arrow-color-text-secondary); }
     .legend-swatch { width: 8px; height: 20px; flex-shrink: 0; }
 
     /* ── Footer ── */
     footer {
-      background: var(--gray-100);
-      color: var(--gray-50);
+      background: var(--arrow-color-bg-inverse);
+      color: var(--arrow-color-text-tertiary);
       font-size: 12px;
       padding: 1.5rem 2rem;
-      border-top: 1px solid var(--gray-90);
+      border-top: 1px solid var(--arrow-color-neutral-800);
       display: flex; flex-wrap: wrap; gap: 0.5rem;
       justify-content: space-between; align-items: center;
       margin-top: 2rem;
     }
-    footer a { color: var(--gray-30); text-decoration: none; }
+    footer a { color: var(--arrow-color-neutral-400); text-decoration: none; } footer a:hover { color: var(--arrow-color-text-inverse); text-decoration: underline; }
     footer a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
@@ -359,8 +333,13 @@
 <body>
 
 <header>
-  <a class="logo" href="../index.html">Arrow ECS</a>
-  <div class="divider"></div>
+  <a class="header-logo" href="../index.html" aria-label="Arrow Electronics">
+    <svg viewBox="0 0 399.3 180" xmlns="http://www.w3.org/2000/svg" style="height:22px;width:auto;" aria-hidden="true" focusable="false">
+      <path fill="#FFFFFF" d="M64.9,120c-0.4,0-0.8,0-1.2-0.1c-2.6-0.6-4.3-3.3-3.6-5.9L72,64.7c0.5-2.2,2.5-3.8,4.8-3.8h13.4c2.3,0,4.3,1.6,4.8,3.8l10.7,44.6h7.8V65.8c0-2.7,2.2-4.9,4.9-4.9H143c2.7,0,4.9,2.2,4.9,4.9v22.5l11.4,21h4.7V65.8c0-2.7,2.2-4.9,4.9-4.9h24.6c2.7,0,4.9,2.2,4.9,4.9v22.5l11.4,21h33.8V80.6c0-2.7,2.2-4.9,4.9-4.9c2.7,0,4.9,2.2,4.9,4.9v33.6c0,2.7-2.2,4.9-4.9,4.9h-41.6c-1.8,0-3.5-1-4.3-2.6l-13.4-24.6c-0.4-0.7-0.6-1.5-0.6-2.4V70.7h-14.8v43.4c0,2.7-2.2,4.9-4.9,4.9h-12.5c-1.8,0-3.5-1-4.3-2.6l-13.4-24.6c-0.4-0.7-0.6-1.5-0.6-2.4V70.7h-14.8v43.4c0,2.7-2.2,4.9-4.9,4.9h-16.6c-2.3,0-4.3-1.6-4.8-3.8L86.3,70.7h-5.7l-10.9,45.5C69.2,118.5,67.2,120,64.9,120z"/>
+      <path fill="#FFFFFF" d="M324.8,119.1h-10.7c-2.4,0-4.4-1.7-4.8-4l-8.6-44.4h-1.3l-8.6,44.4c-0.5,2.3-2.5,4-4.8,4h-10.7c-2.4,0-4.4-1.7-4.8-4l-8.6-44.4h-38v28.7c0,2.7-2.2,4.9-4.9,4.9c-2.7,0-4.9-2.2-4.9-4.9V65.8c0-2.7,2.2-4.9,4.9-4.9h47c2.4,0,4.4,1.7,4.8,4l8.6,44.4h2.6l8.6-44.4c0.5-2.3,2.5-4,4.8-4h9.4c2.4,0,4.4,1.7,4.8,4l8.6,44.4h2.6l8.8-45.3c0.5-2.7,3.1-4.4,5.8-3.9c2.7,0.5,4.4,3.1,3.9,5.8l-9.6,49.2C329.2,117.4,327.2,119.1,324.8,119.1z"/>
+    </svg>
+  </a>
+  <div class="header-divider" style="width:1px;height:24px;background:var(--arrow-color-neutral-600);margin:0 1.25rem;flex-shrink:0;"></div>
   <nav class="breadcrumb">
     <a href="../index.html">Vendor Line Card</a>
     <span>›</span>
@@ -394,7 +373,7 @@
     <div class="section">
       <div class="section-header">
         <div class="section-icon">
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 6a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 16 8zm4 16.125h-8v-2.25h2.875v-5.75H13v-2.25h4.125v8H20z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--arrow-color-text-primary)"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 6a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 16 8zm4 16.125h-8v-2.25h2.875v-5.75H13v-2.25h4.125v8H20z"/></svg>
         </div>
         <h2>Overview</h2>
       </div>
@@ -408,7 +387,7 @@
     <div class="section">
       <div class="section-header">
         <div class="section-icon">
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 18H4V8h24z"/><path d="M8 12h16v2H8zm0 6h10v2H8z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--arrow-color-text-primary)"><path d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 18H4V8h24z"/><path d="M8 12h16v2H8zm0 6h10v2H8z"/></svg>
         </div>
         <h2>Arrow-Carried Portfolio</h2>
       </div>
@@ -502,7 +481,7 @@
     <div class="section">
       <div class="section-header">
         <div class="section-icon">
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M29.707 19.293l-3-3a1 1 0 0 0-1.414 1.414L26.586 19H18v-6.586l1.293 1.293a1 1 0 0 0 1.414-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 1 0 1.414 1.414L16 12.414V19H7.414l1.293-1.293a1 1 0 1 0-1.414-1.414l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414-1.414L7.414 21H16v6.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L19 27.586V21h8.586l-1.293 1.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--arrow-color-text-primary)"><path d="M29.707 19.293l-3-3a1 1 0 0 0-1.414 1.414L26.586 19H18v-6.586l1.293 1.293a1 1 0 0 0 1.414-1.414l-3-3a1 1 0 0 0-1.414 0l-3 3a1 1 0 1 0 1.414 1.414L16 12.414V19H7.414l1.293-1.293a1 1 0 1 0-1.414-1.414l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414-1.414L7.414 21H16v6.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L19 27.586V21h8.586l-1.293 1.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z"/></svg>
         </div>
         <h2>Cross-sell &amp; Expansion Opportunities</h2>
       </div>
@@ -511,70 +490,70 @@
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="#">Splunk</a>
+            <span class="crosssell-vendor" style="color:var(--arrow-color-neutral-500);cursor:default;text-decoration:none">Splunk</span>
             <div class="crosssell-play">SIEM Alongside or Instead of QRadar</div>
             <div class="crosssell-why">Where a customer already runs Splunk, IBM QRadar can feed into it as a data source. Where QRadar is the SIEM, Splunk may already be in use for operational analytics – the two coexist more often than you'd expect in large enterprises. Leads with QRadar should be aware Splunk will be on the shortlist.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="#">Commvault</a>
+            <span class="crosssell-vendor" style="color:var(--arrow-color-neutral-500);cursor:default;text-decoration:none">Commvault</span>
             <div class="crosssell-play">Enterprise Data Protection on IBM Infrastructure</div>
             <div class="crosssell-why">Commvault has strong IBM integrations including IBM Spectrum Protect (now Storage Protect) awareness and IBM Tape support. In large enterprises with mixed IBM and non-IBM environments, Commvault can act as a single backup platform across all of it.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="#">NetApp</a>
+            <span class="crosssell-vendor" style="color:var(--arrow-color-neutral-500);cursor:default;text-decoration:none">NetApp</span>
             <div class="crosssell-play">Storage Complement for Non-IBM Workloads</div>
             <div class="crosssell-why">Customers with IBM storage for IBM workloads (Power/Z) frequently use NetApp for their VMware and file workloads. IBM and NetApp coexist naturally in the same data centre. A storage conversation touching one often surfaces the other.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-expand"></div>
-            <a class="crosssell-vendor" href="#">SNYK</a>
+            <span class="crosssell-vendor" style="color:var(--arrow-color-neutral-500);cursor:default;text-decoration:none">SNYK</span>
             <div class="crosssell-play">DevSecOps Alongside IBM DevOps Tools</div>
             <div class="crosssell-why">Customers buying IBM UrbanCode or IBM Engineering tools are building DevOps practices. SNYK plugs into those pipelines to add developer-first security scanning for code, containers, and open-source dependencies – a natural expansion sell in any IBM DevOps conversation.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-expand"></div>
-            <a class="crosssell-vendor" href="entrust.html">Entrust</a>
+            <a class="crosssell-vendor" href="entrust.html" style="color:var(--tag-sec)">Entrust</a>
             <div class="crosssell-play">HSM for IBM Z Cryptographic Security</div>
             <div class="crosssell-why">IBM Z's built-in CPACF and Crypto Express processors often operate alongside external HSM infrastructure for key escrow and high-assurance certificate management. Entrust nShield HSMs provide the FIPS 140-2 Level 3 hardware root of trust that regulated customers require alongside IBM Z – a natural expansion in any IBM Z security conversation.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="#">HCLSoftware</a>
+            <span class="crosssell-vendor" style="color:var(--arrow-color-neutral-500);cursor:default;text-decoration:none">HCLSoftware</span>
             <div class="crosssell-play">IBM Middleware Heritage – Legacy Modernisation</div>
             <div class="crosssell-why">HCLSoftware acquired several IBM software products (Domino, Connections, BigFix, Unica). Customers running these alongside remaining IBM middleware are a natural combined conversation. HCL and IBM frequently appear together in the same enterprise accounts.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="#">Turbonomic / IBM Automation</a>
+            <span class="crosssell-vendor" style="color:var(--arrow-color-neutral-500);cursor:default;text-decoration:none">Turbonomic / IBM Automation</span>
             <div class="crosssell-play">FinOps &amp; Resource Optimisation</div>
             <div class="crosssell-why">IBM Turbonomic (now part of IBM) is often sold separately into cloud and virtualisation conversations. Customers with IBM Cloud spend or hybrid VMware/IBM environments can reduce waste significantly – a strong conversation when procurement is pressuring on cloud bills.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="opswat.html">OPSWAT</a>
+            <a class="crosssell-vendor" href="opswat.html" style="color:var(--tag-sec)">OPSWAT</a>
             <div class="crosssell-play">OPSWAT Events into IBM QRadar for SIEM Enrichment</div>
             <div class="crosssell-why">OPSWAT MetaDefender generates detailed file scan, CDR, and device compliance events. IBM QRadar can ingest these events via syslog or API, correlating file-based threats with broader network and identity activity in the SOC. In environments running IBM QRadar where OT, air-gapped networks, or removable media control is also required, OPSWAT is a complementary data source and control layer that strengthens the overall security posture.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-complement"></div>
-            <a class="crosssell-vendor" href="f5.html">F5 Networks</a>
+            <a class="crosssell-vendor" href="f5.html" style="color:var(--tag-net)">F5 Networks</a>
             <div class="crosssell-play">F5 WAF &amp; APM Events into IBM QRadar</div>
             <div class="crosssell-why">F5 BIG-IP WAF and Access Policy Manager generate detailed application-layer security events. IBM QRadar can ingest F5 syslog feeds, adding application security visibility to the SOC alongside network and identity event data. F5 BIG-IP hardware is also deployed on IBM infrastructure in enterprise data centres – IBM Power and IBM Z environments commonly co-exist with F5 ADC layers in front of their application interfaces.</div>
           </div>
 
           <div class="crosssell-item">
             <div class="crosssell-badge badge-expand"></div>
-            <a class="crosssell-vendor" href="blackduck.html">Black Duck</a>
+            <a class="crosssell-vendor" href="blackduck.html" style="color:var(--tag-devops)">Black Duck</a>
             <div class="crosssell-play">Open-Source Security in the IBM DevOps Pipeline</div>
             <div class="crosssell-why">Customers building software with IBM DevOps tools (IBM UrbanCode Deploy, IBM Engineering Lifecycle Management) are running CI/CD pipelines where Black Duck provides open-source security scanning. IBM UK itself appears as a Black Duck end user in Arrow's 2025 channel data – confirming co-deployment at enterprise scale. Any IBM DevOps conversation with a customer that builds software internally should include a discussion of their open-source security posture.</div>
           </div>
@@ -588,12 +567,12 @@
     <div class="section">
       <div class="section-header">
         <div class="section-icon">
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--gray-70)"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 2c2.495 0 4.813.768 6.734 2.079L5.08 22.734A11.943 11.943 0 0 1 4 16C4 9.373 9.373 4 16 4zm0 24c-2.495 0-4.813-.768-6.734-2.079l17.655-17.655A11.943 11.943 0 0 1 28 16c0 6.627-5.373 12-12 12z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--arrow-color-text-secondary)"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 2c2.495 0 4.813.768 6.734 2.079L5.08 22.734A11.943 11.943 0 0 1 4 16C4 9.373 9.373 4 16 4zm0 24c-2.495 0-4.813-.768-6.734-2.079l17.655-17.655A11.943 11.943 0 0 1 28 16c0 6.627-5.373 12-12 12z"/></svg>
         </div>
         <h2>Competitive Landscape</h2>
       </div>
       <div class="section-body" style="padding:0.75rem 1.125rem 0.5rem;">
-        <p style="font-size:13px; color:var(--gray-50); margin-bottom:1rem;">Vendors you are likely to encounter in the same deals. Knowing the landscape helps frame IBM's strengths.</p>
+        <p style="font-size:13px; color:var(--arrow-color-text-tertiary); margin-bottom:1rem;">Vendors you are likely to encounter in the same deals. Knowing the landscape helps frame IBM's strengths.</p>
       </div>
       <div class="competitor-list">
 
@@ -644,7 +623,7 @@
     <div class="section">
       <div class="section-header">
         <div class="section-icon">
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--blue-60)"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm10 28H6a2 2 0 0 1-2-2v-1a9 9 0 0 1 9-9h6a9 9 0 0 1 9 9v1a2 2 0 0 1-2 2zm-20-3h20v-1a7 7 0 0 0-7-7h-6a7 7 0 0 0-7 7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="var(--arrow-color-text-primary)"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5zm10 28H6a2 2 0 0 1-2-2v-1a9 9 0 0 1 9-9h6a9 9 0 0 1 9 9v1a2 2 0 0 1-2 2zm-20-3h20v-1a7 7 0 0 0-7-7h-6a7 7 0 0 0-7 7z"/></svg>
         </div>
         <h2>Ideal Customer Profile</h2>
       </div>
@@ -727,15 +706,15 @@
       <div class="section-body">
         <div class="legend">
           <div class="legend-item">
-            <div class="legend-swatch" style="background:var(--green-50)"></div>
+            <div class="legend-swatch" style="background:var(--badge-complement)"></div>
             <span><strong>Complementary</strong> – different problem, typically deployed together</span>
           </div>
           <div class="legend-item">
-            <div class="legend-swatch" style="background:var(--blue-60)"></div>
+            <div class="legend-swatch" style="background:var(--badge-partner)"></div>
             <span><strong>Integration partner</strong> – confirmed technical integration exists</span>
           </div>
           <div class="legend-item">
-            <div class="legend-swatch" style="background:var(--purple-60)"></div>
+            <div class="legend-swatch" style="background:var(--badge-expand)"></div>
             <span><strong>Expansion</strong> – natural upsell or expansion in the same deal</span>
           </div>
         </div>
@@ -750,19 +729,19 @@
         <div class="key-facts">
           <div class="key-fact" style="cursor:pointer;" onclick="window.open('opswat.html','_blank')">
             <div class="key-fact-label">Critical Infrastructure Security</div>
-            <div class="key-fact-value" style="color:var(--blue-60)">OPSWAT &rsaquo;</div>
+            <div class="key-fact-value" style="color:var(--tag-sec)">OPSWAT &rsaquo;</div>
           </div>
           <div class="key-fact" style="cursor:pointer;" onclick="window.open('f5.html','_blank')">
             <div class="key-fact-label">Application Delivery &amp; Security</div>
-            <div class="key-fact-value" style="color:var(--blue-60)">F5 Networks &rsaquo;</div>
+            <div class="key-fact-value" style="color:var(--tag-net)">F5 Networks &rsaquo;</div>
           </div>
           <div class="key-fact" style="cursor:pointer;" onclick="window.open('entrust.html','_blank')">
             <div class="key-fact-label">HSM &amp; Cryptographic Security</div>
-            <div class="key-fact-value" style="color:var(--blue-60)">Entrust &rsaquo;</div>
+            <div class="key-fact-value" style="color:var(--tag-sec)">Entrust &rsaquo;</div>
           </div>
           <div class="key-fact" style="cursor:pointer;" onclick="window.open('blackduck.html','_blank')">
             <div class="key-fact-label">Open-Source Security</div>
-            <div class="key-fact-value" style="color:var(--blue-60)">Black Duck &rsaquo;</div>
+            <div class="key-fact-value" style="color:var(--tag-devops)">Black Duck &rsaquo;</div>
           </div>
         </div>
       </div>
@@ -774,8 +753,8 @@
 
 <footer>
   <span>© 2026 Arrow Electronics, Inc. All rights reserved.</span>
-  <span style="color:var(--gray-50); margin: 0 1rem;">·</span>
-  <span style="color:var(--gray-50)">Last updated: 2026-09</span>
+  <span style="color:var(--arrow-color-text-tertiary); margin: 0 1rem;">·</span>
+  <span style="color:var(--arrow-color-text-tertiary)">Last updated: 2026-09</span>
   <a href="https://www.arrow.com/globalecs/uk/products/" style="margin-left:auto;">arrow.com/globalecs/uk/products</a>
 </footer>
 
